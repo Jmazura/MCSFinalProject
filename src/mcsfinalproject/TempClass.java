@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 public class TempClass {
     
     public LinkedList<Customer> customers;
+    public int customerAdd = 0;
     
     public TempClass(LinkedList<Customer> customers)
     {
@@ -26,9 +27,9 @@ public class TempClass {
     }
     
     //JUST A RANDOM FUNCTIOn
-    public JPanel showCustomers()
+    public JPanel showCustomers(int amountOfCustomer)
     {
-        JPanel tempPanel = new JPanel(new GridLayout(5,3,10,10));
+        JPanel tempPanel = new JPanel(new GridLayout(amountOfCustomer+customerAdd,3,10,10));
         for(Customer index: customers)
         {
             JLabel label = new JLabel(index.getUsername());
@@ -57,6 +58,13 @@ public class TempClass {
         customers.add(customer3);
         customers.add(customer4);
         customers.add(customer5);
+    }
+    
+    public void addCustomer(String username, String password, double balance)
+    {
+        Customer customer = new Customer(username, password, balance);
+        customers.add(customer);
+        customerAdd += 1;
     }
     
 }

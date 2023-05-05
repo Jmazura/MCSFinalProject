@@ -32,7 +32,14 @@ public class MainFrame extends JFrame implements ActionListener{
         TempClass tempClass = new TempClass(customers);
         
         tempClass.addRandomCustomers();
-        this.add(tempClass.showCustomers());
+        JPanel pane = tempClass.showCustomers(5);
+        this.add(pane);
+        tempClass.addCustomer("Jeff", "1234", 999.99);
+        
+        this.remove(pane);
+        this.add(tempClass.showCustomers(5));
+        
+        
         // END OF EXAMPLE OF CLASS
     }
     

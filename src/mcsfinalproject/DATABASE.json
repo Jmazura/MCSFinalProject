@@ -1,0 +1,17 @@
+{
+    "SETTINGS": {"WIDTH": "800", "HEIGHT": "600", "TITLE": "TITLEASD"}
+    ,
+    "VARIABLES": "test"
+    ,
+    "CUSTOMERS": {  "JM": {},
+                    "Vincent": {},
+                    "Yuri": {},
+                    "Lars": {},
+                    "Jomari": {}
+                 }
+    ,
+    "ADMINS": {"ADMIN": {}}
+    ,
+    "TESTS": {"ASD": ""}
+    
+}

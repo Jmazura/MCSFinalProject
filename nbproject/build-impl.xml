@@ -27,6 +27,26 @@ is divided into following sections:
             </not>
         </condition>
     </fail>
+	<target name="compile">
+		<mkdir dir="${dir.classes}"/>
+		<javac srcdir="${dir.src}" destdir="${dir.classes}">
+			<classpath>
+				   <fileset dir="${dir.lib}">
+					  <include name="**/*.jar" />
+				   </fileset>
+			 </classpath>
+		  </javac>
+		</target>
+
+		<target name="jar" depends="compile">
+		<mkdir dir="${dir.jar}"/>
+		<jar destfile="${dir.jar}/${ant.project.name}.jar" basedir="${dir.classes}">
+			<manifest>
+				<attribute name="Main-Class" value="${main-class}"/>
+			</manifest>
+			<zipgroupfileset dir="${dir.lib}" includes="**/*.jar"/>
+		</jar>
+
     <target depends="test,jar,javadoc" description="Build and test whole project." name="default"/>
     <!-- 
                 ======================

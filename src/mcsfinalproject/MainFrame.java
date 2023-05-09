@@ -13,13 +13,14 @@ import java.util.LinkedList;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import org.json.simple.JSONObject;
 
 public class MainFrame extends JFrame implements ActionListener{
     
     
     // CONSTANT VARIABLES
-    public final int FRAME_WIDTH = 600, FRAME_HEIGHT = 600;
-    public final String FRAME_TITLE = "Hotel and Resort Amenities For Black Bean";
+    public final int FRAME_WIDTH, FRAME_HEIGHT;
+    public final String FRAME_TITLE;
     
     public LinkedList<Customer> customers = new LinkedList<Customer>(); 
     
@@ -28,8 +29,8 @@ public class MainFrame extends JFrame implements ActionListener{
     
     // CUSTOMED MADE
     //JPanel Classes
-    MenuClass menuPanel = new MenuClass(FRAME_WIDTH, FRAME_HEIGHT, this);
-    LoginClass loginPanel = new LoginClass(FRAME_WIDTH, FRAME_HEIGHT, this);
+    MenuClass menuPanel;
+    LoginClass loginPanel;
     
     //JPanel Holder
     CardLayout JPanels = new CardLayout();
@@ -37,18 +38,23 @@ public class MainFrame extends JFrame implements ActionListener{
  
     // CONSTRUCTER
     // THIS FUNCTION IS CALLED AUTOMATICALLY WHENEVER THE CLASS IS REFERENCED
-    public MainFrame()
+    public MainFrame(int WIDTH, int HEIGHT, String TITLE)
     {
-      
+        this.FRAME_HEIGHT = HEIGHT;
+        this.FRAME_WIDTH = WIDTH;
+        this.FRAME_TITLE = TITLE;
         // INTIALIZING THE FRAME DEFAULT PROPERTIES
         initializeFrame(FRAME_WIDTH, FRAME_HEIGHT, FRAME_TITLE);   
         initializeJPanels();
         
+        JsonToolClass a = new JsonToolClass();
         
     }
     
     public void initializeJPanels()
-    {
+    {   
+        menuPanel = new MenuClass(FRAME_WIDTH, FRAME_HEIGHT, this);
+        loginPanel = new LoginClass(FRAME_WIDTH, FRAME_HEIGHT, this);
         mainPanel.add("MENU", menuPanel);
         mainPanel.add("LOGIN", loginPanel);
         

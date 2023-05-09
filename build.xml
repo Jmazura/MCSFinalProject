@@ -10,6 +10,7 @@
 <project name="MCSFinalProject" default="default" basedir=".">
     <description>Builds, tests, and runs the project MCSFinalProject.</description>
     <import file="nbproject/build-impl.xml"/>
+	<pathelement path="lib/json-simple-1.1.jar"/>
     <!--
 
     There exist several targets which are by default empty and which can be 

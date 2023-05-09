@@ -12,14 +12,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class LoginClass {
+public class LoginClass extends JPanel{
     
     String adminUsername = "ADMIN";
     String adminPassword = "ADMIN";
        
     Font courierFont = new Font("Courier",Font.BOLD, 32);
     private int FRAME_WIDTH, FRAME_HEIGHT;
-    private JPanel loginPanel;
     private JPanel northPanel;
     private JPanel midPanel;
     public JButton loginButton, registerButton;
@@ -35,17 +34,17 @@ public class LoginClass {
         this.initializePanel();
         this.setUpTitle();
         this.loginForm();
+        this.add(northPanel, BorderLayout.NORTH);
+        this.add(midPanel, BorderLayout.CENTER);
     }
     
     private void initializePanel()
     {
-        loginPanel = new JPanel();
+
         northPanel = new JPanel();
         midPanel = new JPanel(new GridLayout(3,0,0,0));
-        loginPanel.setPreferredSize(new Dimension(this.FRAME_WIDTH, this.FRAME_HEIGHT));
+        this.setPreferredSize(new Dimension(this.FRAME_WIDTH, this.FRAME_HEIGHT));
         northPanel.setPreferredSize(new Dimension(this.FRAME_WIDTH, this.FRAME_HEIGHT/3));
-        //midPanel.setPreferredSize(new Dimension(150,150));
-        //loginPanel.setBackground(new Color(102,0,51));
         
     }
     
@@ -94,7 +93,7 @@ public class LoginClass {
        northPanel.add(titleLabel2, BorderLayout.NORTH); 
     }
     
-    public boolean isCredentialsValid(String username, String password)
+    private boolean isCredentialsValid(String username, String password)
     {
         if(username.equals(adminUsername) && password.equals(adminPassword))
         {
@@ -105,23 +104,6 @@ public class LoginClass {
             return false;
         }
         
-    }
-    
-    public JPanel getPanel()
-    {
-        loginPanel.add(northPanel, BorderLayout.NORTH);
-        loginPanel.add(midPanel, BorderLayout.CENTER);
-        return loginPanel;
-    }
-    
-    public JButton getLoginButton()
-    {
-        return loginButton;
-    }
-    
-    public JButton getRegisterButton()
-    {
-        return registerButton;
     }
     
     public boolean loginValid()

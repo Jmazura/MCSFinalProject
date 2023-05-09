@@ -19,44 +19,40 @@ public class MainFrame extends JFrame implements ActionListener{
     
     // CONSTANT VARIABLES
     public final int FRAME_WIDTH = 600, FRAME_HEIGHT = 600;
-    public final String FRAME_TITLE = "HOTEL PROGRAM";
+    public final String FRAME_TITLE = "Hotel and Resort Amenities for black Bean";
     
     public LinkedList<Customer> customers = new LinkedList<Customer>(); 
     
     //FONTS
     Font courierFont = new Font("Courier",Font.BOLD, 32);
     
-    // CLASSES
-    public LoginClass loginClass;
-    public MenuClass menuClass;
+    //JPanel Classes
+    MenuClass menuPanel = new MenuClass(FRAME_WIDTH, FRAME_HEIGHT, this);
+    LoginClass loginPanel = new LoginClass(FRAME_WIDTH, FRAME_HEIGHT, this);
     
-    public CardLayout card;
-    public JPanel mainPanel;
-    
+    //JPanel Holder
+    CardLayout JPanels = new CardLayout();
+    JPanel mainPanel = new JPanel(JPanels);
+ 
     // CONSTRUCTER
     // THIS FUNCTION IS CALLED AUTOMATICALLY WHENEVER THE CLASS IS REFERENCED
-    MainFrame()
+    public MainFrame()
     {
-        
-        mainPanel = new JPanel();
-        mainPanel.setLayout(card);
-        
+      
         // INTIALIZING THE FRAME DEFAULT PROPERTIES
         initializeFrame(FRAME_WIDTH, FRAME_HEIGHT, FRAME_TITLE);   
-       
-        // CALLING THE LOGIN CLASS AND ADDING IT TO THE FRAME(THIS)
-        loginClass = new LoginClass(FRAME_WIDTH, FRAME_HEIGHT, this);
-        menuClass = new MenuClass(FRAME_WIDTH, FRAME_HEIGHT,this);
+        initializeJPanels();
         
-        mainPanel.add( "login",loginClass.getPanel());
-        mainPanel.add("menu",menuClass.getPanel());
-        /*
-        card.show(mainPanel, "login");
-        this.add(mainPanel, BorderLayout.CENTER);
-        this.pack();
-        */
-        this.add(loginClass.getPanel(),BorderLayout.CENTER);
+        
+    }
     
+    public void initializeJPanels()
+    {
+        mainPanel.add("MENU", menuPanel);
+        mainPanel.add("LOGIN", loginPanel);
+        
+        JPanels.show(mainPanel, "LOGIN");
+        this.add(mainPanel);
     }
     
     // FOR EVENTS OR BUTTONS PRESSED
@@ -64,28 +60,17 @@ public class MainFrame extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         Object event = new Object();
         event = e.getSource();
-        
-        
-        // LOGIN CLASS
-        if(event.equals(loginClass.getLoginButton()))
+       
+        if(event.equals(loginPanel.loginButton))
         {
-            if(loginClass.loginValid())
-            {
-                
-                this.add(menuClass.getPanel(), BorderLayout.CENTER);
-            }
+            if(loginPanel.loginValid())
+                JPanels.show(mainPanel, "MENU");
         }
         
-        
-        // MENU CLASS
-        if(event.equals(menuClass.getButton()))
+        if(event.equals(menuPanel.btn1))
         {
-            this.remove(0);
-            this.add(loginClass.getPanel());
+            JPanels.show(mainPanel, "LOGIN");
         }
-        
-        
-        
     }
     
     
@@ -110,25 +95,6 @@ public class MainFrame extends JFrame implements ActionListener{
         this.setVisible(true);
     }
 
-     
-    // CALL THIS TO SEE AN EXAMPLE
-    public void ExampleMethod()
-    {
-         
-        // EXAMPLE OF CLASS
-        // START OF EXAMPLE OF CLASS
-        TempClass tempClass = new TempClass(customers);
-        
-        tempClass.addRandomCustomers();
-        JPanel pane = tempClass.showCustomers();
-        this.add(pane);
-        tempClass.addCustomer("Jeff", "1234", 999.99);
-        
-        this.remove(pane);
-        this.add(tempClass.showCustomers());
-      
-        
-        // END OF EXAMPLE OF CLASS
-    }
+  
     
 }

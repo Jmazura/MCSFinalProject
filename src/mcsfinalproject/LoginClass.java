@@ -1,12 +1,17 @@
 package mcsfinalproject;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -26,6 +31,7 @@ public class LoginClass extends JPanel{
     private JTextField usernameField, passwordField;
     private LinkedList<Customer> customers;
     
+    
     public LoginClass(int FRAME_WIDTH,int FRAME_HEIGHT, ActionListener AL)
     {
         this.FRAME_HEIGHT = FRAME_HEIGHT;
@@ -36,6 +42,7 @@ public class LoginClass extends JPanel{
         this.loginForm();
         this.add(northPanel, BorderLayout.NORTH);
         this.add(midPanel, BorderLayout.CENTER);
+        
     }
     
     private void initializePanel()
@@ -77,6 +84,8 @@ public class LoginClass extends JPanel{
         memberLoginLabel.setFont(new Font("Ariel",Font.BOLD,22));
         test.add(memberLoginLabel, BorderLayout.NORTH);
         
+        //upperMidPanel.setBackground(new Color(0,0,0,100));
+        //lowerMidPanel.setBackground(new Color(0,0,0,100));
         midPanel.add(test, BorderLayout.NORTH);
         midPanel.add(upperMidPanel, BorderLayout.CENTER);
         midPanel.add(lowerMidPanel, BorderLayout.SOUTH);
@@ -86,9 +95,13 @@ public class LoginClass extends JPanel{
     {
        JLabel titleLabel = new JLabel("Hotel and Resort Amenities");
        titleLabel.setFont(courierFont);
+       titleLabel.setForeground(Color.red);
        JLabel titleLabel2 = new JLabel("for black Bean");
        titleLabel2.setFont(courierFont);
-       northPanel.setLayout(new FlowLayout());
+       titleLabel2.setForeground(Color.red);
+       //northPanel.setLayout(new GridLayout(2,1,0,0));
+      // northPanel.setLayout(new FlowLayout(FlowLayout.LEADING));
+       northPanel.setBackground(new Color(0,0,0,0));
        northPanel.add(titleLabel, BorderLayout.NORTH);
        northPanel.add(titleLabel2, BorderLayout.NORTH); 
     }
@@ -118,13 +131,18 @@ public class LoginClass extends JPanel{
         }
     }
     
-    public void pressedRegisterButton()
-    {
-        
-    }
     
     public void setCustomers(LinkedList<Customer> customers)
     {
         this.customers = customers;
     }
+    
+    protected void paintComponent(Graphics g)
+    {
+        Graphics2D g2d = (Graphics2D) g;
+        super.paintComponent(g2d);
+        Image lars = new ImageIcon("src/mcsfinalproject/lars.jpg").getImage();
+        g2d.drawImage(lars, 0,0,this.FRAME_WIDTH, this.FRAME_HEIGHT,null);
+    }
+    
 }

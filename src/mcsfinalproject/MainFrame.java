@@ -19,13 +19,14 @@ public class MainFrame extends JFrame implements ActionListener{
     
     // CONSTANT VARIABLES
     public final int FRAME_WIDTH = 600, FRAME_HEIGHT = 600;
-    public final String FRAME_TITLE = "Hotel and Resort Amenities for black Bean";
+    public final String FRAME_TITLE = "Hotel and Resort Amenities For Black Bean";
     
     public LinkedList<Customer> customers = new LinkedList<Customer>(); 
     
     //FONTS
     Font courierFont = new Font("Courier",Font.BOLD, 32);
     
+    // CUSTOMED MADE
     //JPanel Classes
     MenuClass menuPanel = new MenuClass(FRAME_WIDTH, FRAME_HEIGHT, this);
     LoginClass loginPanel = new LoginClass(FRAME_WIDTH, FRAME_HEIGHT, this);
@@ -65,6 +66,7 @@ public class MainFrame extends JFrame implements ActionListener{
         {
             if(loginPanel.loginValid())
                 JPanels.show(mainPanel, "MENU");
+                
         }
         
         if(event.equals(menuPanel.btn1))

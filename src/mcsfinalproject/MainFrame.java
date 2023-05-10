@@ -48,10 +48,17 @@ public class MainFrame extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) 
     {
         Object event = e.getSource();
-        if(event.equals(splashPanel.getLoginButton()))
+        
+        if(event.equals(splashPanel.getButton()))
         {
-            splashPanel.loginButtonAction();
+            jPanels.show(mainPanel, "login");
         }
+        
+        if(event.equals(loginPanel.getLoginButton()))
+            loginPanel.loginEvent();
+        if(event.equals(loginPanel.getRegisterButton()))
+            loginPanel.registerEvent();
+                
     }
     
     public void init()

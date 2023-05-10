@@ -31,6 +31,38 @@ public class AdminTool {
         return admins;
     }
     
+    public void removeByID(int idNumber)
+    {
+        if(admins.isEmpty())
+            read();
+        
+        FileWriter writer = null;
+        try {
+            writer = new FileWriter(this.pathFile);
+            
+            for(int i=0;i<admins.size();i++)
+            {
+                if(admins.get(i).getId() == idNumber)
+                {
+                    admins.remove(i);
+                    break;
+                }
+            }
+            
+            gson.toJson(admins, writer);
+            writer.close();
+        } catch (IOException ex) {
+            Logger.getLogger(CustomerTool.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                writer.close();
+            } catch (IOException ex) {
+                Logger.getLogger(CustomerTool.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+    }
+    
     public void removeByUsername(String username)
     {
         if(admins.isEmpty())

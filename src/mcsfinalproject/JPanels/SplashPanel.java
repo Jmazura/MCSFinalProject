@@ -1,9 +1,17 @@
 package mcsfinalproject.JPanels;
 
 import Entities.Admin;
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -12,89 +20,30 @@ import mcsfinalproject.Tools.*;
 
 public class SplashPanel extends JPanel{
     
-    private JButton loginButton;
-    private JTextField userField, passField;
-    private AdminTool tool;
-    private JLabel statusLabel;
+    private int WIDTH, HEIGHT;
+    private JLabel bg;
+    private JButton button;
+
+    public JButton getButton() {
+        return button;
+    }
     
     public SplashPanel(ActionListener AL,int w,int h)
     {
+        this.WIDTH = w;
+        this.HEIGHT = h;
+        this.setLayout(null);
+        Image image = new ImageIcon("src/mcsfinalproject/Media/HotelResort.png").getImage();
+        bg = new JLabel(new ImageIcon(image.getScaledInstance(WIDTH, HEIGHT, 0)));
         
-        this.setBackground(Color.black);
-        this.setSize(w, h);
-        
-        JPanel mainPanel = new JPanel(new GridLayout(3,2,0,0));
-        
-        JLabel userLabel = new JLabel("Username: ");
-        JLabel passLabel = new JLabel("Password: ");
-        userField = new JTextField(10);
-        passField = new JTextField(10);
-        statusLabel = new JLabel("NONE");
-        loginButton = new JButton("LOGIN");
-        loginButton.addActionListener(AL);
-        
-        tool = new AdminTool("src/mcsfinalproject/datas/admins.json");
-        
-        mainPanel.add(userLabel);
-        mainPanel.add(passLabel);
-        mainPanel.add(userField);
-        mainPanel.add(passField);
-        mainPanel.add(loginButton);
-        mainPanel.add(statusLabel);
-        
-        this.add(mainPanel);
-        
+        button = new JButton("Continue");
+        button.setBackground(new Color(0,0,0,0));
+        button.addActionListener(AL);
+        this.add(button);
+        this.add(bg);
+        bg.setBounds(0, 0, WIDTH, HEIGHT);
+        button.setBounds((WIDTH/2)-35,(HEIGHT/2)+155,100,25 );
     }
-    
-    public void loginButtonAction()
-    {
-        String username = userField.getText();
-        String password = passField.getText();
-        
-        boolean validUsername = false, validPassword = false, validUser=false;
-        
-        for(int i=0;i<tool.getList().size();i++)
-        {
-            if(username.equals(tool.getList().get(i).getUsername()))
-            {
-                
-                validUsername = true;
-            }
-            else{
-                validUsername = false;
-            }
-            if(password.equals(tool.getList().get(i).getPassword()))
-            {
-                validPassword = true;
-            }
-            else{
-                validPassword = false;
-            }
-            if(validPassword && validUsername)
-            {
-                validUser = true;
-            }
-            else{
-                validUser = false;
-            }
-        }
-        
-        
-        if(!validUsername)
-        {
-            this.statusLabel.setText("USERNAME INCORRECT!");
-        }
-        else if(!validPassword)
-        {
-            this.statusLabel.setText("PASSWORD INCORRECT");
-        }
-        if(validUser)
-            this.statusLabel.setText("ACCESS GRANTED...");
-    }
-    
-    public JButton getLoginButton()
-    {
-        return loginButton;
-    }
+
     
 }

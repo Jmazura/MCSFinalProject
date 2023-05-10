@@ -41,11 +41,6 @@ public class MainFrame extends JFrame implements ActionListener{
         // INTIALIZING THE FRAME DEFAULT PROPERTIES
         initializeFrame(FRAME_WIDTH, FRAME_HEIGHT, FRAME_TITLE);   
         initializeJPanels();
-        
-<<<<<<< Updated upstream
-        
-=======
->>>>>>> Stashed changes
     }
     
     public void initializeJPanels()

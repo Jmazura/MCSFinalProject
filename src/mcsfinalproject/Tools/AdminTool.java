@@ -1,6 +1,6 @@
 package mcsfinalproject.Tools;
 
-import Entities.Admin;
+import mcsfinalproject.Entities.Admin;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.FileNotFoundException;

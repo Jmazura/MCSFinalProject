@@ -1,4 +1,4 @@
-package Entities;
+package mcsfinalproject.Entities;
 
 public class Customer {
     

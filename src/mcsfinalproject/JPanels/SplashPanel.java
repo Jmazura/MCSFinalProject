@@ -1,6 +1,6 @@
 package mcsfinalproject.JPanels;
 
-import Entities.Admin;
+import mcsfinalproject.Entities.Admin;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;

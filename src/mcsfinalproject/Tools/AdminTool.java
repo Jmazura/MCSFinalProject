@@ -1,5 +1,6 @@
-package mcsfinalproject;
+package mcsfinalproject.Tools;
 
+import Entities.Admin;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.FileNotFoundException;
@@ -12,44 +13,43 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class CustomerTool {
+public class AdminTool {
     
-    public final String pathFile;
-    public Gson gson;
-    public List<Customer> customers = new ArrayList<>();
+    private final String pathFile;
+    private Gson gson;
+    private List<Admin> admins = new ArrayList<>();
     
-    public CustomerTool(String pathfile)
+    public AdminTool(String pathfile)
     {
         this.pathFile = pathfile;
-        
-        gson = new GsonBuilder().setPrettyPrinting().create();
-        read();  
+        this.gson = new GsonBuilder().setPrettyPrinting().create();
+        read();
     }
     
-    public List<Customer> getList()
+    public List<Admin> getList()
     {
-        return customers;
+        return admins;
     }
     
     public void removeByUsername(String username)
     {
-        if(customers.isEmpty())
+        if(admins.isEmpty())
             read();
         
         FileWriter writer = null;
         try {
             writer = new FileWriter(this.pathFile);
             
-            for(int i=0;i<customers.size();i++)
+            for(int i=0;i<admins.size();i++)
             {
-                if(customers.get(i).getUsername().equals(username))
+                if(admins.get(i).getUsername().equals(username))
                 {
-                    customers.remove(i);
+                    admins.remove(i);
                     break;
                 }
             }
             
-            gson.toJson(customers, writer);
+            gson.toJson(admins, writer);
             writer.close();
         } catch (IOException ex) {
             Logger.getLogger(CustomerTool.class.getName()).log(Level.SEVERE, null, ex);
@@ -63,16 +63,16 @@ public class CustomerTool {
         
     }
     
-    public void add(Customer object)
+    public void add(Admin object)
     {
-        if(customers.isEmpty())
+        if(admins.isEmpty())
             read();
         
         FileWriter writer = null;
         try {
             writer = new FileWriter(this.pathFile);
-            customers.add(object);
-            gson.toJson(customers, writer);
+            admins.add(object);
+            gson.toJson(admins, writer);
             writer.close();
         } catch (IOException ex) {
             Logger.getLogger(CustomerTool.class.getName()).log(Level.SEVERE, null, ex);
@@ -89,17 +89,17 @@ public class CustomerTool {
         
     }
     
-    private void read()
+    public void read()
     {
         try {
             FileReader reader = new FileReader(this.pathFile);
             //customers = gson.fromJson(reader, customers.getClass());
-            Customer[] temp = gson.fromJson(reader, Customer[].class);
+            Admin[] temp = gson.fromJson(reader, Admin[].class);
             if(temp != null)
             {         
-                for(Customer index: temp)
+                for(Admin index: temp)
                 {
-                    customers.add(index);
+                    admins.add(index);
                 }
             }
         } catch (FileNotFoundException ex) {

@@ -2,97 +2,65 @@ package mcsfinalproject;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.LinkedList;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
+import mcsfinalproject.JPanels.*;
 
 public class MainFrame extends JFrame implements ActionListener{
     
+    private final int FRAME_WIDTH, FRAME_HEIGHT;
+    private final String FRAME_TITLE;
     
-    // CONSTANT VARIABLES
-    public final int FRAME_WIDTH = 600, FRAME_HEIGHT = 600;
-    public final String FRAME_TITLE = "Hotel and Resort Amenities For Black Bean";
+    private CardLayout jPanels = new CardLayout();
+    private JPanel mainPanel = new JPanel(jPanels);
     
-    //FONTS
-    Font courierFont = new Font("Courier",Font.BOLD, 32);
+    private LoginPanel loginPanel;
+    private MenuPanel menuPanel;
+    private SplashPanel splashPanel;
     
-    // CUSTOMED MADE
-    //JPanel Classes
-    MenuClass menuPanel = new MenuClass(FRAME_WIDTH, FRAME_HEIGHT, this);
-    LoginClass loginPanel = new LoginClass(FRAME_WIDTH, FRAME_HEIGHT, this);
-    
-    //JPanel Holder
-    CardLayout JPanels = new CardLayout();
-    JPanel mainPanel = new JPanel(JPanels);
- 
-    // CONSTRUCTER
-    // THIS FUNCTION IS CALLED AUTOMATICALLY WHENEVER THE CLASS IS REFERENCED
-    public MainFrame()
+    public MainFrame(int w,int h,String t)
     {
-      
-        // INTIALIZING THE FRAME DEFAULT PROPERTIES
-        initializeFrame(FRAME_WIDTH, FRAME_HEIGHT, FRAME_TITLE);   
-        initializeJPanels();
-    }
-    
-    public void initializeJPanels()
-    {
-        mainPanel.add("MENU", menuPanel);
-        mainPanel.add("LOGIN", loginPanel);
+        FRAME_WIDTH = w; FRAME_HEIGHT= h; FRAME_TITLE = t;
+        this.init();
+        this.init_Panel();
         
-        JPanels.show(mainPanel, "LOGIN");
-        this.add(mainPanel);
-    }
-    
-    // FOR EVENTS OR BUTTONS PRESSED
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        Object event = new Object();
-        event = e.getSource();
-       
-        if(event.equals(loginPanel.loginButton))
-        {
-            if(loginPanel.loginValid())
-                JPanels.show(mainPanel, "MENU");
-                
-        }
-        
-        if(event.equals(menuPanel.btn1))
-        {
-            JPanels.show(mainPanel, "LOGIN");
-        }
-    }
-    
-    
-    
-    
-    
-    // DEFAULT FRAME FUNCTIONS
-    public void initializeFrame(int width,int height,String title)
-    {
-        this.setTitle(title);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setResizable(true);
-        this.setFocusable(true);
-        this.setSize(new Dimension(width, height));
-        this.setLocationRelativeTo(null);
         
     }
     
-     // A FUNCTION THAT SHOW THE FRAME
-    public void showFrame()
+    public void init_Panel()
     {
-        this.setVisible(true);
+        loginPanel = new LoginPanel(this, FRAME_WIDTH, FRAME_HEIGHT);
+        menuPanel = new MenuPanel(this,FRAME_WIDTH, FRAME_HEIGHT);
+        splashPanel = new SplashPanel(this, FRAME_WIDTH, FRAME_HEIGHT);
+        
+        mainPanel.add("login",loginPanel);
+        mainPanel.add("splash", splashPanel);
+        mainPanel.add("menu",menuPanel);
+        
+        //jPanels.show(mainPanel, "login");
+        jPanels.show(mainPanel, "splash");
+        this.add(mainPanel, BorderLayout.CENTER);    
     }
 
-  
+    @Override
+    public void actionPerformed(ActionEvent e) 
+    {
+        Object event = e.getSource();
+        if(event.equals(splashPanel.getLoginButton()))
+        {
+            splashPanel.loginButtonAction();
+        }
+    }
     
+    public void init()
+    {
+        this.setSize(this.FRAME_WIDTH, this.FRAME_HEIGHT);
+        this.setTitle(this.FRAME_TITLE);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setFocusable(true);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
 }

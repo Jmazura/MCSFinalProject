@@ -21,8 +21,6 @@ public class MainFrame extends JFrame implements ActionListener{
     public final int FRAME_WIDTH = 600, FRAME_HEIGHT = 600;
     public final String FRAME_TITLE = "Hotel and Resort Amenities For Black Bean";
     
-    public LinkedList<Customer> customers = new LinkedList<Customer>(); 
-    
     //FONTS
     Font courierFont = new Font("Courier",Font.BOLD, 32);
     
@@ -44,7 +42,10 @@ public class MainFrame extends JFrame implements ActionListener{
         initializeFrame(FRAME_WIDTH, FRAME_HEIGHT, FRAME_TITLE);   
         initializeJPanels();
         
+<<<<<<< Updated upstream
         
+=======
+>>>>>>> Stashed changes
     }
     
     public void initializeJPanels()

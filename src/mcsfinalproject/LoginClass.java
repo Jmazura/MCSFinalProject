@@ -10,7 +10,6 @@ import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionListener;
-import java.util.LinkedList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -23,13 +22,12 @@ public class LoginClass extends JPanel{
     String adminPassword = "ADMIN";
        
     Font courierFont = new Font("Courier",Font.BOLD, 32);
-    private int FRAME_WIDTH, FRAME_HEIGHT;
+    private final int FRAME_WIDTH, FRAME_HEIGHT;
     private JPanel northPanel;
     private JPanel midPanel;
     public JButton loginButton, registerButton;
     private ActionListener AL;
     private JTextField usernameField, passwordField;
-    private LinkedList<Customer> customers;
     
     
     public LoginClass(int FRAME_WIDTH,int FRAME_HEIGHT, ActionListener AL)
@@ -130,12 +128,7 @@ public class LoginClass extends JPanel{
             return false;
         }
     }
-    
-    
-    public void setCustomers(LinkedList<Customer> customers)
-    {
-        this.customers = customers;
-    }
+
     
     protected void paintComponent(Graphics g)
     {

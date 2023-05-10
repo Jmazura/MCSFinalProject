@@ -3,9 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/Users/Yugi/Documents/NetBeansProjects/MCSFinalProject/src/mcsfinalproject/DATABASE.json</file>
             <file>file:/D:/Users/Yugi/Documents/NetBeansProjects/MCSFinalProject/src/mcsfinalproject/LoginClass.java</file>
+            <file>file:/D:/Users/Yugi/Documents/NetBeansProjects/MCSFinalProject/src/mcsfinalproject/Customer.java</file>
             <file>file:/D:/Users/Yugi/Documents/NetBeansProjects/MCSFinalProject/src/mcsfinalproject/MainFrame.java</file>
+<<<<<<< Updated upstream
             <file>file:/D:/Users/Yugi/Documents/NetBeansProjects/MCSFinalProject/src/mcsfinalproject/MenuClass.java</file>
+=======
+            <file>file:/D:/Users/Yugi/Documents/NetBeansProjects/MCSFinalProject/src/mcsfinalproject/MCSFinalProject.java</file>
+            <file>file:/D:/Users/Yugi/Documents/NetBeansProjects/MCSFinalProject/src/mcsfinalproject/MenuClass.java</file>
+            <file>file:/D:/Users/Yugi/Documents/NetBeansProjects/MCSFinalProject/src/mcsfinalproject/JsonToolClass.java</file>
+>>>>>>> Stashed changes
         </group>
     </open-files>
 </project-private>

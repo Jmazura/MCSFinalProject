@@ -55,10 +55,18 @@ public class MainFrame extends JFrame implements ActionListener{
         }
         
         if(event.equals(loginPanel.getLoginButton()))
+        {
             loginPanel.loginEvent();
-        if(event.equals(loginPanel.getRegisterButton()))
-            loginPanel.registerEvent();
-                
+            if(loginPanel.isAccess())
+            {
+                jPanels.show(mainPanel, "menu");
+            }
+        }
+        if(event.equals(loginPanel.getAdminButton()))
+            loginPanel.adminEvent();
+         
+        if(event.equals(loginPanel.getSplashButton()))
+            jPanels.show(mainPanel, "splash");
     }
     
     public void init()

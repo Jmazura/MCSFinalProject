@@ -1,6 +1,11 @@
 [
   {
-    "id": 0,
+      "id":0,
+        "username":"",
+        "password":""
+  },
+  {
+    "id": 1,
     "username": "ADMIN",
     "password": "ADMIN"
   }

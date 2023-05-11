@@ -5,6 +5,7 @@ import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import mcsfinalproject.JPanels.*;
 
@@ -54,19 +55,35 @@ public class MainFrame extends JFrame implements ActionListener{
             jPanels.show(mainPanel, "login");
         }
         
-        if(event.equals(loginPanel.getLoginButton()))
+        if(event.equals(loginPanel.getStaffLoginButton()))
         {
-            loginPanel.loginEvent();
-            if(loginPanel.isAccess())
+            if(loginPanel.isStaffLoginValid())
             {
-                jPanels.show(mainPanel, "menu");
+                JOptionPane.showMessageDialog(null, "ACCESS GRANTED", "LOGIN", 1);
+                System.out.println("VALID");
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "ACCESS DENIED", "LOGIN",0);
             }
         }
-        if(event.equals(loginPanel.getAdminButton()))
-            loginPanel.adminEvent();
-         
-        if(event.equals(loginPanel.getSplashButton()))
-            jPanels.show(mainPanel, "splash");
+        
+        if(event.equals(loginPanel.getAdminLoginButton()))
+        {
+            if(loginPanel.isAdminLoginValid())
+            {
+                JOptionPane.showMessageDialog(null, "ACCESS GRANTED", "LOGIN", 1);
+                System.out.println("VALID");
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "ACCESS DENIED", "LOGIN",0);
+            }
+        }
+        
+        if(event.equals(loginPanel.getAdminFormButton()))
+            loginPanel.getAdminFormButtonEvent();
+        if(event.equals(loginPanel.getStaffFormButton()))
+            loginPanel.getStaffFormButtonEvent();
+        
     }
     
     public void init()

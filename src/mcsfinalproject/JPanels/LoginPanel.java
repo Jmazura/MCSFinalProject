@@ -1,10 +1,9 @@
 package mcsfinalproject.JPanels;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -13,7 +12,6 @@ import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import mcsfinalproject.Entities.Admin;
@@ -21,170 +19,275 @@ import mcsfinalproject.Tools.AdminTool;
 
 public class LoginPanel extends JPanel{
     
-    private int PANEL_WIDTH;
-    private int PANEL_HEIGHT;
-    private JButton loginButton;
-    private JButton adminButton;
-    private JButton splashButton;
-    private JTextField userField;
-    private JTextField passField;
-    private AdminTool adminTool;
+    private String adminFilePath = "src/mcsfinalproject/datas/admins.json";
     
-    //private final JPanel formPanel;
+    private int PANEL_WIDTH, PANEL_HEIGHT;
+    private ActionListener al;
     
-    private JPanel loginPanel;
-    private JPanel loginFormPanel;
-    private JPanel contentPanel;
-    private ActionListener AL;
-    private boolean usernameValid;
-    private boolean passwordValid;
+    private JTextField staffUserField, staffPassField, adminUserField, adminPassField;
+    private JButton staffLoginButton, adminFormButton, adminLoginButton, staffFormButton;
     
-    public LoginPanel(ActionListener AL,int w,int h)
+    private CardLayout forms;
+    private JPanel formsPanel, staffFormPanel, adminFormPanel;
+    
+    private AdminTool adminJson = new AdminTool(this.adminFilePath);
+    
+    public LoginPanel(ActionListener aL, int width,int height)
     {
-        this.AL = AL;
-        this.PANEL_WIDTH = w;
-        this.PANEL_HEIGHT = h;
-
-        this.adminTool = new AdminTool("src/mcsfinalproject/datas/admins.json");
-        
+        this.al = aL;
+        this.PANEL_WIDTH = width;
+        this.PANEL_HEIGHT = height;
+        this.setSize(new Dimension(this.PANEL_WIDTH, this.PANEL_HEIGHT));
         this.setLayout(new BorderLayout());
-        this.init_loginPanel();
-        this.add(loginPanel, BorderLayout.LINE_START);
+        
+        this.add(sidePanel(), BorderLayout.LINE_START);
+        //this.setBackground(new Color(255,255,255));
+    }
+    
+    public JPanel sidePanel()
+    {
+        JPanel sideMainPanel = new JPanel(new GridBagLayout());
+        sideMainPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        GridBagConstraints sGBC = new GridBagConstraints();
+        
+        forms = new CardLayout();
+        formsPanel = new JPanel(forms);
+        
+        staffFormPanel = staffFormPanel();
+        adminFormPanel = adminFormPanel();
+        
+        sGBC.insets = new Insets(0,10,0,10);
+        sGBC.gridx = 0;
+        sGBC.gridy = 0;
+        
+        formsPanel.add("staff", staffFormPanel);
+        formsPanel.add("admin", adminFormPanel);
+        
+        forms.show(formsPanel, "staff");
+        sideMainPanel.add(formsPanel, sGBC);
+        return sideMainPanel;
+    }
+    
+    public JPanel staffFormPanel()
+    {
+        JPanel formPanel = new JPanel(new GridBagLayout());
+        formPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        GridBagConstraints fGBC = new GridBagConstraints();
+        
+        JLabel staffLoginLabel = new JLabel("STAFF LOGIN");
+        JLabel staffUserLabel = new JLabel("Username:");
+        JLabel staffPassLabel = new JLabel("Password:");
+        
+        staffUserField = new JTextField(10);
+        staffPassField = new JTextField(10);
+        
+        staffLoginButton = new JButton("LOGIN");
+        adminFormButton = new JButton("LOGIN AS ADMIN");
+        
+        fGBC.gridx = 0;
+        fGBC.gridy = 0;
+        fGBC.gridwidth = 2;
+        formPanel.add(staffLoginLabel, fGBC);
+        fGBC.fill = GridBagConstraints.HORIZONTAL;
+        fGBC.gridwidth = 1;
+        fGBC.gridx = 0;
+        fGBC.gridy = 1;
+        formPanel.add(staffUserLabel, fGBC);
+        fGBC.gridx = 1;
+        fGBC.gridy = 1;
+        formPanel.add(staffUserField, fGBC);
+        fGBC.gridx = 0;
+        fGBC.gridy = 2;
+        formPanel.add(staffPassLabel, fGBC);
+        fGBC.gridx = 1;
+        fGBC.gridy = 2;
+        formPanel.add(staffPassField, fGBC);
+        
+        fGBC.fill = GridBagConstraints.NONE;
+        fGBC.insets = new Insets(10,0,0,0);
+        
+        fGBC.gridwidth = 2;
+        fGBC.gridx = 0;
+        fGBC.gridy = 3;
+        formPanel.add(staffLoginButton, fGBC);
+        
+        fGBC.gridwidth = 2;
+        fGBC.gridx = 0;
+        fGBC.gridy = 4;
+        formPanel.add(adminFormButton, fGBC);
+        
+        this.staffLoginButton.addActionListener(this.al);
+        this.adminFormButton.addActionListener(this.al);
+        return formPanel;
+    }
+    
+    public JPanel adminFormPanel()
+    {
+        JPanel formPanel = new JPanel(new GridBagLayout());
+        formPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        GridBagConstraints fGBC = new GridBagConstraints();
+        
+        JLabel adminLoginLabel = new JLabel("ADMIN LOGIN");
+        JLabel adminUserLabel = new JLabel("Username:");
+        JLabel adminPassLabel = new JLabel("Password:");
+        
+        adminUserField = new JTextField(10);
+        adminPassField = new JTextField(10);
+        
+        adminLoginButton = new JButton("LOGIN");
+        staffFormButton = new JButton("LOGIN AS STAFF");
+        
+        fGBC.gridx = 0;
+        fGBC.gridy = 0;
+        fGBC.gridwidth = 2;
+        formPanel.add(adminLoginLabel, fGBC);
+        fGBC.fill = GridBagConstraints.HORIZONTAL;
+        fGBC.gridwidth = 1;
+        fGBC.gridx = 0;
+        fGBC.gridy = 1;
+        formPanel.add(adminUserLabel, fGBC);
+        fGBC.gridx = 1;
+        fGBC.gridy = 1;
+        formPanel.add(adminUserField, fGBC);
+        fGBC.gridx = 0;
+        fGBC.gridy = 2;
+        formPanel.add(adminPassLabel, fGBC);
+        fGBC.gridx = 1;
+        fGBC.gridy = 2;
+        formPanel.add(adminPassField, fGBC);
+        
+        fGBC.fill = GridBagConstraints.NONE;
+        fGBC.insets = new Insets(10,0,0,0);
+        
+        fGBC.gridwidth = 2;
+        fGBC.gridx = 0;
+        fGBC.gridy = 3;
+        formPanel.add(adminLoginButton, fGBC);
+        
+        fGBC.gridwidth = 2;
+        fGBC.gridx = 0;
+        fGBC.gridy = 4;
+        formPanel.add(staffFormButton, fGBC);
+        
+        this.adminLoginButton.addActionListener(this.al);
+        this.staffFormButton.addActionListener(this.al);
+        return formPanel;
+    }
+    
+    public void contentPanel()
+    {
         
     }
     
-    public void init_loginPanel()
-    {
-        loginPanel = new JPanel(new GridBagLayout());
-        Font font1 = new Font("Courier",Font.BOLD, 20);
-        loginPanel.setBackground(Color.decode("#46205c"));
-        GridBagConstraints gbc = new GridBagConstraints();
-        loginFormPanel = new JPanel(new GridBagLayout());
-        loginFormPanel.setBorder(BorderFactory.createLineBorder(Color.decode("#59366c"), 3));
-        loginFormPanel.setBackground(Color.decode("#46205c"));
-        JLabel userLabel, passLabel, memberLoginLabel;
-        userLabel = new JLabel("Username: ");
-        userLabel.setFont(font1);
-        userLabel.setForeground(Color.decode("#dfcece"));
-        passLabel = new JLabel("Password: ");
-        passLabel.setFont(font1);
-        passLabel.setForeground(Color.decode("#dfcece"));
-        memberLoginLabel = new JLabel("Member Login");
-        memberLoginLabel.setFont(font1);
-        memberLoginLabel.setForeground(Color.decode("#dfcece"));
-        userField = new JTextField(10);
-        passField = new JTextField(10);
-        loginButton = new JButton("LOGIN");
-        loginButton.addActionListener(AL);
-        adminButton = new JButton("REGISTER");
-        adminButton.addActionListener(AL);
-        gbc.gridwidth = 2;
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        loginFormPanel.add(memberLoginLabel, gbc);
-        gbc.fill =  GridBagConstraints.HORIZONTAL;
-        gbc.gridwidth = 1;
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        loginFormPanel.add(userLabel, gbc);
-        gbc.gridx = 1;
-        gbc.gridy = 1;
-        loginFormPanel.add(userField, gbc);
-        gbc.gridx = 0;
-        gbc.gridy = 2;
-        loginFormPanel.add(passLabel, gbc);
-        gbc.gridx = 1;
-        gbc.gridy = 2;
-        loginFormPanel.add(passField, gbc);
-        gbc.gridx = 0;
-        gbc.gridy = 3;
-        loginFormPanel.add(loginButton, gbc);
-        gbc.gridx = 1;
-        gbc.gridy = 3;
-        loginFormPanel.add(adminButton, gbc);
 
-        gbc.anchor = GridBagConstraints.CENTER;
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        loginPanel.add(loginFormPanel, gbc);
-        
-        gbc.anchor = GridBagConstraints.SOUTH;
-        gbc.fill = 0;
-        gbc.gridy = 2;
-        gbc.gridx = 0;
-        gbc.insets = new Insets(100,0,0,0);
-        splashButton = new JButton("BACK");
-        splashButton.addActionListener(AL);
-        loginPanel.add(splashButton, gbc);
-
-    }
     
-    public void loginEvent()
-    {
-       if(this.isCredentialsValid())
-       {
-           System.out.println("ACCESS GRANTED!");
-       }
-    }
+    // BUTTONS & EVENTS
     
-    public void adminEvent()
+     public JButton getStaffLoginButton() {
+        return staffLoginButton;
+    }
+     
+    public void getStaffLoginButtonEvent()
     {
         
     }
     
-    private boolean isCredentialsValid()
+    public boolean isStaffLoginValid()
     {
-        String username = this.userField.getText();
-        String password = this.passField.getText();
-        
-        usernameValid = false;
-        passwordValid = false;
-        
-        List<Admin> admins = adminTool.getList();
-        
-        for(int i=0; i<admins.size();i++)
+        boolean user = false, pass = false, isAdmin = false;
+        String username = this.staffUserField.getText();
+        String password = this.staffPassField.getText();
+        List<Admin> admins = adminJson.getList();
+        for(int i=0; i<admins.size(); i++)
         {
-            if(admins.get(i).getUsername().equals(username))
+            if(!admins.get(i).getIsAdmin())
             {
-                usernameValid = true;
-            }
-            else{
-                usernameValid = false;
-                JOptionPane.showMessageDialog(null, "USERNAME IS INVALID","LOGIN ERROR",0);
-                break;
-            }
-            if(admins.get(i).getPassword().equals(password))
-            {
-                passwordValid = true;
-                break;
-            }
-            else{
-                passwordValid = false;
-                JOptionPane.showMessageDialog(this, "PASSWORD IS INVALID","LOGIN ERROR",0);
-                break;
+                if(username.equals(admins.get(i).getUsername()))
+                {
+                    user = true;
+                }else{
+                    user = false;
+                    continue;
+                }
+                if(password.equals(admins.get(i).getPassword()))
+                {
+                    pass = true;
+                    break;
+                }else{
+                    pass = false;
+                    continue;
+                }
             }
             
         }
-        return usernameValid && passwordValid;
+        if(user && pass)
+        {
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+
+    public JButton getAdminFormButton() {
+        return adminFormButton;
+    }
+    
+    public void getAdminFormButtonEvent()
+    {
+        this.forms.show(this.formsPanel, "admin");
+    }
+    
+    public boolean isAdminLoginValid()
+    {
+        boolean user = false, pass = false, isAdmin = false;
+        String username = this.adminUserField.getText();
+        String password = this.adminPassField.getText();
+        List<Admin> admins = adminJson.getList();
+        for(int i=0; i<admins.size(); i++)
+        {
+            if(admins.get(i).getIsAdmin())
+            {
+                if(username.equals(admins.get(i).getUsername()))
+                {
+                    user = true;
+                }else{
+                    user = false;
+                    continue;
+                }
+                if(password.equals(admins.get(i).getPassword()))
+                {
+                    pass = true;
+                    break;
+                }else{
+                    pass = false;
+                    continue;
+                }
+            }
+            
+        }
+        if(user && pass)
+        {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public JButton getAdminLoginButton() {
+        return adminLoginButton;
+    }
+
+    public void getAdminLoginButtonEvent() {
         
     }
+    
+    public JButton getStaffFormButton() {
+        return staffFormButton;
+    }
+    
+    public void getStaffFormButtonEvent() {
+        this.forms.show(this.formsPanel, "staff");
+    }
 
-    public JButton getLoginButton() {
-        return loginButton;
-    }
-    
-    public JButton getSplashButton()
-    {
-        return splashButton;
-    }
-
-    public JButton getAdminButton() {
-        return adminButton;
-    }
-    
-    public boolean isAccess()
-    {
-        return this.isCredentialsValid();
-    }
-    
 }

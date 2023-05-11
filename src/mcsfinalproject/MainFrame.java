@@ -20,6 +20,7 @@ public class MainFrame extends JFrame implements ActionListener{
     private LoginPanel loginPanel;
     private MenuPanel menuPanel;
     private SplashPanel splashPanel;
+    private StaffMenuPanel staffMenuPanel;
     
     public MainFrame(int w,int h,String t)
     {
@@ -35,10 +36,12 @@ public class MainFrame extends JFrame implements ActionListener{
         loginPanel = new LoginPanel(this, FRAME_WIDTH, FRAME_HEIGHT);
         menuPanel = new MenuPanel(this,FRAME_WIDTH, FRAME_HEIGHT);
         splashPanel = new SplashPanel(this, FRAME_WIDTH, FRAME_HEIGHT);
+        staffMenuPanel = new StaffMenuPanel(this, FRAME_WIDTH, FRAME_HEIGHT);
         
         mainPanel.add("login",loginPanel);
         mainPanel.add("splash", splashPanel);
         mainPanel.add("menu",menuPanel);
+        mainPanel.add("staffMenu",staffMenuPanel);
         
         //jPanels.show(mainPanel, "login");
         jPanels.show(mainPanel, "splash");
@@ -60,7 +63,7 @@ public class MainFrame extends JFrame implements ActionListener{
             if(loginPanel.isStaffLoginValid())
             {
                 JOptionPane.showMessageDialog(null, "ACCESS GRANTED", "LOGIN", 1);
-                System.out.println("VALID");
+                this.jPanels.show(mainPanel, "staffMenu");
             }
             else{
                 JOptionPane.showMessageDialog(null, "ACCESS DENIED", "LOGIN",0);
@@ -72,7 +75,7 @@ public class MainFrame extends JFrame implements ActionListener{
             if(loginPanel.isAdminLoginValid())
             {
                 JOptionPane.showMessageDialog(null, "ACCESS GRANTED", "LOGIN", 1);
-                System.out.println("VALID");
+                
             }
             else{
                 JOptionPane.showMessageDialog(null, "ACCESS DENIED", "LOGIN",0);

@@ -21,6 +21,9 @@ public class MainFrame extends JFrame implements ActionListener{
     private MenuPanel menuPanel;
     private SplashPanel splashPanel;
     private StaffMenuPanel staffMenuPanel;
+    private StaffLoginPanel staffLoginPanel;
+    private AdminLoginPanel adminLoginPanel;
+    private AdminMenuPanel adminMenuPanel;
     
     public MainFrame(int w,int h,String t)
     {
@@ -37,11 +40,17 @@ public class MainFrame extends JFrame implements ActionListener{
         menuPanel = new MenuPanel(this,FRAME_WIDTH, FRAME_HEIGHT);
         splashPanel = new SplashPanel(this, FRAME_WIDTH, FRAME_HEIGHT);
         staffMenuPanel = new StaffMenuPanel(this, FRAME_WIDTH, FRAME_HEIGHT);
+        staffLoginPanel = new StaffLoginPanel(this, FRAME_WIDTH, FRAME_HEIGHT);
+        adminLoginPanel = new AdminLoginPanel(this, FRAME_WIDTH, FRAME_HEIGHT);
+        adminMenuPanel = new AdminMenuPanel(this, FRAME_WIDTH, FRAME_HEIGHT);
         
         mainPanel.add("login",loginPanel);
         mainPanel.add("splash", splashPanel);
         mainPanel.add("menu",menuPanel);
         mainPanel.add("staffMenu",staffMenuPanel);
+        mainPanel.add("stafflogin", staffLoginPanel);
+        mainPanel.add("adminlogin", adminLoginPanel);
+        mainPanel.add("adminMenu", adminMenuPanel);
         
         //jPanels.show(mainPanel, "login");
         jPanels.show(mainPanel, "splash");
@@ -53,39 +62,70 @@ public class MainFrame extends JFrame implements ActionListener{
     {
         Object event = e.getSource();
         
+        
+        // SPLASH SCREEN
         if(event.equals(splashPanel.getButton()))
         {
             jPanels.show(mainPanel, "login");
         }
         
-        if(event.equals(loginPanel.getStaffLoginButton()))
+        
+        // LOGIN PANEL
+        if(event.equals(loginPanel.getStaffButton()))    
         {
-            if(loginPanel.isStaffLoginValid())
+            jPanels.show(mainPanel, "stafflogin");
+        }
+        if(event.equals(loginPanel.getAdminButton()))  
+        {
+            jPanels.show(mainPanel, "adminlogin");
+        }
+        if(event.equals(staffLoginPanel.getBackButton()))
+        {
+            jPanels.show(mainPanel, "login");
+            
+        }
+        if(event.equals(staffLoginPanel.getLoginButton()))
+        {
+            if(staffLoginPanel.loginValueValid())
             {
-                JOptionPane.showMessageDialog(null, "ACCESS GRANTED", "LOGIN", 1);
-                this.jPanels.show(mainPanel, "staffMenu");
+                jPanels.show(mainPanel, "staffMenu");
+                staffMenuPanel.setID(staffLoginPanel.getID());
             }
             else{
-                JOptionPane.showMessageDialog(null, "ACCESS DENIED", "LOGIN",0);
+                JOptionPane.showMessageDialog(null, "Credentials doesn't match", "LOGIN ERROR", 0);
+            }
+        }
+        if(event.equals(adminLoginPanel.getBackButton()))
+        {
+            jPanels.show(mainPanel, "login");
+        }
+        if(event.equals(adminLoginPanel.getLoginButton()))
+        {
+            if(adminLoginPanel.loginValueValid())
+            {
+                jPanels.show(mainPanel, "adminMenu");
+                adminMenuPanel.setID(adminLoginPanel.getID());
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Credentials doesn't match", "LOGIN ERROR", 0);
             }
         }
         
-        if(event.equals(loginPanel.getAdminLoginButton()))
+        // STAFF MENU PANEL
+        if(event.equals(staffMenuPanel.getLogoutButton()))
         {
-            if(loginPanel.isAdminLoginValid())
-            {
-                JOptionPane.showMessageDialog(null, "ACCESS GRANTED", "LOGIN", 1);
-                
-            }
-            else{
-                JOptionPane.showMessageDialog(null, "ACCESS DENIED", "LOGIN",0);
-            }
+            staffLoginPanel.getUserField().setText("");
+            staffLoginPanel.getPassField().setText("");
+            jPanels.show(mainPanel, "login");
         }
         
-        if(event.equals(loginPanel.getAdminFormButton()))
-            loginPanel.getAdminFormButtonEvent();
-        if(event.equals(loginPanel.getStaffFormButton()))
-            loginPanel.getStaffFormButtonEvent();
+        // ADMIN MENU PANEL
+        if(event.equals(adminMenuPanel.getLogoutButton()))
+        {
+            adminLoginPanel.getUserField().setText("");
+            adminLoginPanel.getPassField().setText("");
+            jPanels.show(mainPanel, "login");
+        }
         
     }
     

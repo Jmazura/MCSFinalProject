@@ -1,12 +1,12 @@
 package mcsfinalproject.Entities;
 
-public class Admin {
+public class Staff {
     
     private int id;
     private String username;
     private String password;
     
-    public Admin(String user, String pass)
+    public Staff(String user, String pass)
     {
         this.username = user;
         this.password = pass;

@@ -1,6 +1,5 @@
 package mcsfinalproject.Tools;
 
-import mcsfinalproject.Entities.Admin;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.FileNotFoundException;
@@ -11,67 +10,66 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import mcsfinalproject.Entities.Staff;
 
-
-public class AdminTool {
+public class StaffTool {
     
     private final String pathFile;
     private Gson gson;
-    private List<Admin> admins = new ArrayList<>();
+    private List<Staff> staffs = new ArrayList<>();
     
-    public AdminTool(String pathfile)
+    public StaffTool(String pathfile)
     {
         this.pathFile = pathfile;
         this.gson = new GsonBuilder().setPrettyPrinting().create();
         read();
     }
     
-    public List<Admin> getList()
+    public List<Staff> getList()
     {
-        return admins;
+        return staffs;
     }
     
     public void removeByID(int idNumber)
     {
-        if(admins.isEmpty())
+        if(staffs.isEmpty())
             read();
         
         boolean found = false;
-        
+        for(Staff index: staffs)
+        {
+            if(index.getId() == idNumber)
+            {
+                found = true;
+            }
+            if(found)
+            {
+                index.setId(index.getId()-1);
+            }
+        }
         
         FileWriter writer = null;
         try {
             writer = new FileWriter(this.pathFile);
             
-            for(int i=0;i<admins.size();i++)
+            for(int i=0;i<staffs.size();i++)
             {
-                if(admins.get(i).getId() == idNumber)
+                if(staffs.get(i).getId() == idNumber)
                 {
-                    admins.remove(i);
-                    for(Admin index: admins)
-                    {
-                        if(index.getId() == idNumber+1)
-                        {
-                            found = true;
-                        }
-                        if(found)
-                        {
-                            index.setId(index.getId()-1);
-                        }
-                    }
+                    staffs.remove(i);
                     break;
                 }
             }
             
-            gson.toJson(admins, writer);
+            gson.toJson(staffs, writer);
             writer.close();
         } catch (IOException ex) {
-            Logger.getLogger(CustomerTool.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StaffTool.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 writer.close();
             } catch (IOException ex) {
-                Logger.getLogger(CustomerTool.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(StaffTool.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         
@@ -79,11 +77,11 @@ public class AdminTool {
     
     public void removeByUsername(String username)
     {
-        if(admins.isEmpty())
+        if(staffs.isEmpty())
             read();
         
         boolean found = false;
-        for(Admin index: admins)
+        for(Staff index: staffs)
         {
             if(index.getUsername().equals(username))
             {
@@ -99,49 +97,50 @@ public class AdminTool {
         try {
             writer = new FileWriter(this.pathFile);
             
-            for(int i=0;i<admins.size();i++)
+            for(int i=0;i<staffs.size();i++)
             {
-                if(admins.get(i).getUsername().equals(username))
+                if(staffs.get(i).getUsername().equals(username))
                 {
-                    admins.remove(i);
+                    staffs.remove(i);
                     break;
                 }
             }
             
-            gson.toJson(admins, writer);
+            gson.toJson(staffs, writer);
             writer.close();
         } catch (IOException ex) {
-            Logger.getLogger(CustomerTool.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StaffTool.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 writer.close();
             } catch (IOException ex) {
-                Logger.getLogger(CustomerTool.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(StaffTool.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         
     }
     
-    public void add(Admin object)
+    public void add(Staff object)
     {
-        if(admins.isEmpty())
+        if(staffs.isEmpty())
             read();
         
-        object.setId(admins.get(admins.size()-1).getId()+1);
+        object.setId(staffs.get(staffs.size()-1).getId()+1);
+  
         
         FileWriter writer = null;
         try {
             writer = new FileWriter(this.pathFile);
-            admins.add(object);
-            gson.toJson(admins, writer);
+            staffs.add(object);
+            gson.toJson(staffs, writer);
             writer.close();
         } catch (IOException ex) {
-            Logger.getLogger(CustomerTool.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StaffTool.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 writer.close();
             } catch (IOException ex) {
-                Logger.getLogger(CustomerTool.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(StaffTool.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
@@ -155,12 +154,12 @@ public class AdminTool {
         try {
             FileReader reader = new FileReader(this.pathFile);
             //customers = gson.fromJson(reader, customers.getClass());
-            Admin[] temp = gson.fromJson(reader, Admin[].class);
+            Staff[] temp = gson.fromJson(reader, Staff[].class);
             if(temp != null)
             {         
-                for(Admin index: temp)
+                for(Staff index: temp)
                 {
-                    admins.add(index);
+                    staffs.add(index);
                 }
             }
         } catch (FileNotFoundException ex) {

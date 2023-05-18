@@ -57,7 +57,6 @@ public class AdminMenuPanel extends JPanel implements ActionListener{
         this.setSize(w, h);
         this.setLayout(new BorderLayout());
         
-        admins.removeByID(3);
         
         centerPanel = new JPanel(centerCardLayout);
         servicePanel = new ServicePanel();

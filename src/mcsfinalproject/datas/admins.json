@@ -6,7 +6,7 @@
   },
   {
     "id": 1,
-    "username": "ADMIN",
+    "username": "JM",
     "password": "ADMIN"
   },
   {
@@ -16,7 +16,42 @@
   },
   {
     "id": 3,
-    "username": "asd",
-    "password": "asd"
+    "username": "JOM",
+    "password": "JM"
+  },
+  {
+    "id": 4,
+    "username": "JOM",
+    "password": "JM"
+  },
+  {
+    "id": 5,
+    "username": "JOM",
+    "password": "JM"
+  },
+  {
+    "id": 6,
+    "username": "JOM",
+    "password": "JM"
+  },
+  {
+    "id": 7,
+    "username": "JOM",
+    "password": "JM"
+  },
+  {
+    "id": 8,
+    "username": "JOM",
+    "password": "JM"
+  },
+  {
+    "id": 9,
+    "username": "SDF",
+    "password": "ADMINA"
+  },
+  {
+    "id": 10,
+    "username": "ASD",
+    "password": "ZX"
   }
 ]

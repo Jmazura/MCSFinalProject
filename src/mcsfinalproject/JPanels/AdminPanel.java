@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import mcsfinalproject.Entities.Admin;
 import mcsfinalproject.Tools.AdminTool;
@@ -20,6 +21,7 @@ public class AdminPanel extends JPanel implements ActionListener{
     List <Admin> admins = adtool.getList();
     //List <JButton> buttons;
     JButton[] buttons = new JButton[50];
+    JLabel[] ids = new JLabel[50];
     JLabel[] names = new JLabel[50];
     JLabel[] passwords = new JLabel[50];
     JPanel centerPanel;
@@ -69,19 +71,20 @@ public class AdminPanel extends JPanel implements ActionListener{
             gbc.gridx = 1;
             gbc.gridy = i;
             JLabel localname = new JLabel(admins.get(i).getUsername());
-            centerPanel.add(localname, gbc);
             names[i] = localname;
+            centerPanel.add(names[i], gbc);
             
             gbc.gridx = 0;
             gbc.gridy = i;
             JLabel localid = new JLabel(Integer.toString(admins.get(i).getId()));
-            centerPanel.add(localid, gbc);
+            ids[i] = localid;
+            centerPanel.add(ids[i], gbc);
             
             gbc.gridx = 2;
             gbc.gridy = i;
             JLabel localPass = new JLabel(admins.get(i).getPassword());
-            centerPanel.add(localPass, gbc);
             passwords[i] = localPass;
+            centerPanel.add(passwords[i], gbc);
             
             gbc.gridx = 3;
             gbc.gridy = i;
@@ -120,6 +123,14 @@ public class AdminPanel extends JPanel implements ActionListener{
         
         if(event.equals(removeButton))
         {
+            int removeId = Integer.parseInt(JOptionPane.showInputDialog("USER ID TO REMOVE:"));
+            adtool.removeByID(removeId);
+            centerPanel.remove(buttons[removeId]);
+            centerPanel.remove(ids[removeId]);
+            centerPanel.remove(names[removeId]);
+            centerPanel.remove(passwords[removeId]);
+            centerPanel.validate();
+            centerPanel.repaint();
             
         }
         

@@ -1,0 +1,34 @@
+[
+  {
+    "id": 0,
+    "room_name": "Tourist Class",
+    "available": false,
+    "reservered": false
+  },
+  {
+    "id": 1,
+    "room_name": "Deluxe Class",
+    "available": false,
+    "reservered": false
+  },
+  { "id": 2,
+    "room_name": "Ambassador Class",
+    "available": false,
+    "reservered": false
+  },
+  { "id": 3,
+    "room_name": "Corporate Class",
+    "available": false,
+    "reservered": false
+  },
+  { "id": 4,
+    "room_name": "Anex Room",
+    "available": false,
+    "reservered": false
+  },
+  { "id": 5,
+    "room_name": "Anex Room",
+    "available": false,
+    "reservered": false
+  }
+]

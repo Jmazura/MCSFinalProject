@@ -75,33 +75,35 @@ public class NewAdminFrame extends JFrame implements ActionListener{
         {
             adtol.add(new Admin(this.userField.getText(),this.passField.getText()));
             admins = adtol.getList();
-            int id = admins.size();
+            int id = admins.size()-1;
             GridBagConstraints gbc = new GridBagConstraints();
             gbc.gridx = 0;
             gbc.gridy = id;
             JLabel localid = new JLabel(Integer.toString(id));
             
             centerPanel.add(localid, gbc);
-            gbc.gridx = 0;
+            gbc.gridx = 1;
             gbc.gridy = id;
-            JLabel localuser = new JLabel(Integer.toString(id));
+            JLabel localuser = new JLabel(admins.get(id).getUsername());
             usernames[id] = localuser;
             centerPanel.add(localuser, gbc);
-            gbc.gridx = 0;
+            gbc.gridx = 2;
             gbc.gridy = id;
-            JLabel localpassword = new JLabel(Integer.toString(id));
+            JLabel localpassword = new JLabel(admins.get(id).getPassword());
             passwords[id] = localpassword;
             centerPanel.add(localpassword, gbc);
-            gbc.gridx = 0;
+            gbc.gridx = 3;
             gbc.gridy = id;
             JButton localbutton = new JButton("EDIT");
             buttons[id] = localbutton;
             centerPanel.add(localbutton, gbc);
+            centerPanel.validate();
+            centerPanel.repaint();
             
         }
         if(event.equals(cancelButton))
         {
-            
+            this.dispose();
         }
     }
 }

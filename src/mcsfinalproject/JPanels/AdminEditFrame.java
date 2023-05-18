@@ -74,7 +74,7 @@ public class AdminEditFrame extends JFrame implements ActionListener{
     public void init()
     {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setSize(400, 400);
+        this.setSize(400, 150);
         this.setResizable(false);
         this.setFocusable(true);
         this.setLocationRelativeTo(null);
@@ -87,7 +87,9 @@ public class AdminEditFrame extends JFrame implements ActionListener{
         if(event.equals(this.userEditButton))
         {
             String newUsername = JOptionPane.showInputDialog("NEW USERNAME: ");
-            admins.get(id).setUsername(newUsername);
+            if(newUsername != null)
+                admins.get(id).setUsername(newUsername);
+                
             adtol.update(admins);
             admins = adtol.getList();
             username.setText(admins.get(id).getUsername());
@@ -97,7 +99,8 @@ public class AdminEditFrame extends JFrame implements ActionListener{
         if(event.equals(this.passEditButton))
         {
             String newPassword = JOptionPane.showInputDialog("NEW PASSWORD: ");
-            admins.get(id).setPassword(newPassword);
+            if(newPassword != null)
+                admins.get(id).setPassword(newPassword);
             adtol.update(admins);
             admins = adtol.getList();
             password.setText(admins.get(id).getPassword());

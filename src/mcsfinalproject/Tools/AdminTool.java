@@ -141,7 +141,8 @@ public class AdminTool {
     {
         if(admins.isEmpty())
             read();
-        
+        admins.clear();
+        read();
         object.setId(admins.get(admins.size()-1).getId()+1);
         
         FileWriter writer = null;

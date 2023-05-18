@@ -8,9 +8,22 @@ public class Customer {
     
     private String name;
     private boolean isSeniorCitizen;
-    private Dictionary<String, Double> pendingPayments = new Hashtable<>();
-    private Dictionary<String, String> logInHistory = new Hashtable<>();
-    private Dictionary<String, String> logOutHIstory = new Hashtable<>();
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public boolean isIsSeniorCitizen() {
+        return isSeniorCitizen;
+    }
+
+    public void setIsSeniorCitizen(boolean isSeniorCitizen) {
+        this.isSeniorCitizen = isSeniorCitizen;
+    }
     
     public Customer()
     {

@@ -1,9 +1,11 @@
 package mcsfinalproject.JPanels;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -27,10 +29,21 @@ public class LoginPanel extends JPanel{
         this.setSize(PANEL_WIDTH, PANEL_HEIGHT);
         this.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
+        
+        //DESIGN
+        this.setBackground(Color.decode("#574b90"));
 
         staffButton = new JButton("Login As a Staff");
         adminButton = new JButton("Login As an Admin");
+        staffButton.setBackground(Color.decode("#364f6b"));
+        staffButton.setBorder(BorderFactory.createLineBorder(Color.decode("#fdfdfd"),7));
+        staffButton.setForeground(Color.WHITE);
+        adminButton.setBackground(Color.decode("#364f6b"));
+        adminButton.setForeground(Color.WHITE);
+        adminButton.setBorder(BorderFactory.createLineBorder(Color.decode("#fdfdfd"),7));
         JLabel orLabel = new JLabel("   OR   ");
+        orLabel.setForeground(Color.WHITE);
+        
         staffButton.setFont(myFont);
         adminButton.setFont(myFont);
         orLabel.setFont(myFont);

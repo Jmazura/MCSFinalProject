@@ -18,6 +18,114 @@
     ],
     "paymentDueQuantity": [
       500
-    ]
+    ],
+    "typeRoomNumber": 5
+     ,
+     "check_in":"11/11/11"
+     ,
+     "until":"11/11/11",
+     "check_in":"11/11/11"
+     ,
+     "until":"11/11/11"
+  },
+  {
+    "id": 1,
+    "name": "CUSTOMER 1",
+    "isSeniorCitizen": false,
+    "check_In_History": [
+      "11/11/11",
+      "12/11/11",
+      "13/11/11",
+      "14/11/11"
+    ],
+    "check_Out_History": [
+      "15/11/11"
+    ],
+    "IDpaymentItem": 0,
+    "paymentDue": [
+      "LUNCH"
+    ],
+    "paymentDueQuantity": [
+      500
+    ],
+    "typeRoomNumber": 5,
+     "check_in":"11/11/11"
+     ,
+     "until":"11/11/11"
+  },
+  {
+    "id": 3,
+    "name": "CUSTOMER 1",
+    "isSeniorCitizen": false,
+    "check_In_History": [
+      "11/11/11",
+      "12/11/11",
+      "13/11/11",
+      "14/11/11"
+    ],
+    "check_Out_History": [
+      "15/11/11"
+    ],
+    "IDpaymentItem": 0,
+    "paymentDue": [
+      "LUNCH"
+    ],
+    "paymentDueQuantity": [
+      500
+    ],
+    "typeRoomNumber": 5,
+     "check_in":"11/11/11"
+     ,
+     "until":"11/11/11"
+  },
+  {
+    "id": 4,
+    "name": "CUSTOMER 1",
+    "isSeniorCitizen": false,
+    "check_In_History": [
+      "11/11/11",
+      "12/11/11",
+      "13/11/11",
+      "14/11/11"
+    ],
+    "check_Out_History": [
+      "15/11/11"
+    ],
+    "IDpaymentItem": 0,
+    "paymentDue": [
+      "LUNCH"
+    ],
+    "paymentDueQuantity": [
+      500
+    ],
+    "typeRoomNumber": 5,
+     "check_in":"11/11/11"
+     ,
+     "until":"11/11/11"
+  },
+  {
+    "id": 5,
+    "name": "CUSTOMER 1",
+    "isSeniorCitizen": false,
+    "check_In_History": [
+      "11/11/11",
+      "12/11/11",
+      "13/11/11",
+      "14/11/11"
+    ],
+    "check_Out_History": [
+      "15/11/11"
+    ],
+    "IDpaymentItem": 0,
+    "paymentDue": [
+      "LUNCH"
+    ],
+    "paymentDueQuantity": [
+      500
+    ],
+    "typeRoomNumber": 5,
+     "check_in":"11/11/11"
+     ,
+     "until":"11/11/11"
   }
 ]

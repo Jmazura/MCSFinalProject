@@ -13,6 +13,33 @@ public class Customer {
     private int IDpaymentItem;
     private List<String> paymentDue;
     private List<Integer> paymentDueQuantity;
+    private int typeRoomNumber;
+    private String check_in;
+    private String until;
+
+    public String getCheck_in() {
+        return check_in;
+    }
+
+    public void setCheck_in(String check_in) {
+        this.check_in = check_in;
+    }
+
+    public String getUntil() {
+        return until;
+    }
+
+    public void setUntil(String until) {
+        this.until = until;
+    }
+
+    public int getTypeRoomNumber() {
+        return typeRoomNumber;
+    }
+
+    public void setTypeRoomNumber(int typeRoomNumber) {
+        this.typeRoomNumber = typeRoomNumber;
+    }
 
     public int getId() {
         return id;

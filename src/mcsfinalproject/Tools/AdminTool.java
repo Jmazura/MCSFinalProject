@@ -52,7 +52,8 @@ public class AdminTool {
             read();
         
         boolean found = false;
-        
+        admins.clear();
+        read();
         
         FileWriter writer = null;
         try {

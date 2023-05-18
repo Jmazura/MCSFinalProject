@@ -24,15 +24,16 @@ public class NewAdminFrame extends JFrame implements ActionListener{
     private JButton addButton, cancelButton;
     
     private JPanel centerPanel;
-    private JLabel[] usernames, passwords;
+    private JLabel[] usernames, passwords, ids;
     JButton[] buttons;
     
-    public NewAdminFrame(JPanel centerPanel, JLabel[] usernames, JLabel[] passwords, JButton[] buttons)
+    public NewAdminFrame(JPanel centerPanel, JLabel[] usernames, JLabel[] passwords, JButton[] buttons, JLabel[] ids)
     {
         this.usernames = usernames;
         this.passwords = passwords;
         this.buttons = buttons;
         this.centerPanel = centerPanel;
+        this.ids = ids;
         init();
         JPanel mainPanel = new JPanel(new GridLayout(3,2,0,0));
         
@@ -80,6 +81,7 @@ public class NewAdminFrame extends JFrame implements ActionListener{
             gbc.gridx = 0;
             gbc.gridy = id;
             JLabel localid = new JLabel(Integer.toString(id));
+            ids[id] = localid;
             
             centerPanel.add(localid, gbc);
             gbc.gridx = 1;

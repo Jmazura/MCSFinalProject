@@ -10,9 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import mcsfinalproject.Entities.Admin;
 import mcsfinalproject.Entities.Staff;
-import mcsfinalproject.Tools.AdminTool;
 import mcsfinalproject.Tools.StaffTool;
 
 

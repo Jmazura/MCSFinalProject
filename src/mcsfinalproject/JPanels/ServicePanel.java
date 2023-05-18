@@ -157,24 +157,45 @@ public class ServicePanel extends JPanel implements ActionListener{
                     this.add(Reading_Light_PRICE, gbc); 
                     break;
                 case 8:
+                    this.Books_And_Magazine_PRICE = new JLabel(Double.toString(this.Books_And_Magazine));
+                    this.add(Books_And_Magazine_PRICE, gbc); 
                     break;
                 case 9:
+                    this.Toiletries_PRICE = new JLabel(Double.toString(this.Toiletries));
+                    this.add(Toiletries_PRICE, gbc); 
                     break;
                 case 10:
+                    this.Luggage_Rack_PRICE = new JLabel(Double.toString(this.Luggage_Rack));
+                    this.add(Luggage_Rack_PRICE, gbc); 
                     break;
                 case 11:
+                    this.BreakFast_PRICE = new JLabel(Double.toString(this.BreakFast));
+                    this.add(BreakFast_PRICE, gbc); 
                     break;
                 case 12:
+                    this.Lunch_PRICE = new JLabel(Double.toString(this.Lunch));
+                    this.add(Lunch_PRICE, gbc); 
                     break;
                 case 13:
+                    this.Dinner_PRICE = new JLabel(Double.toString(this.Dinner));
+                    this.add(Dinner_PRICE, gbc); 
                     break;
                 case 14:
+                    this.Drink_PRICE = new JLabel(Double.toString(this.Drink));
+                    this.add(Drink_PRICE, gbc); 
                     break;
                 case 15:
+                    this.Snack_PRICE = new JLabel(Double.toString(this.Snack));
+                    this.add(Snack_PRICE, gbc); 
                     break;
-            }
-            
+                case 16:
+                    this.Snack_PRICE = new JLabel(Double.toString(this.Snack));
+                    this.add(Snack_PRICE, gbc); 
+                    break;
+
         }
+            }
+             
         
         for(int i=1; i<=15;i++)
         {
@@ -522,28 +543,184 @@ public class ServicePanel extends JPanel implements ActionListener{
                     }
                     break;
                 case 4:
+                    if(event.equals(buttons[i]))
+                    {
+                        double number;
+                        try{
+                        number = Double.parseDouble(JOptionPane.showInputDialog("Change Price: "));
+                        
+                        this.setCorporate_Class(number);                        
+                        this.Extra_Bed_PRICE.setText(Double.toString(number));
+                        }catch(Exception asd)
+                        {
+                            
+                        }
+                    }
                     break;
                 case 5:
+                    if(event.equals(buttons[i]))
+                    {
+                        double number;
+                        try{
+                        number = Double.parseDouble(JOptionPane.showInputDialog("Change Price: "));
+                        
+                        this.setCorporate_Class(number);                        
+                        this.Pillow_PRICE.setText(Double.toString(number));
+                        }catch(Exception asd)
+                        {
+                            
+                        }
+                    }
                     break;
                 case 6:
+                    if(event.equals(buttons[i]))
+                    {
+                        double number;
+                        try{
+                        number = Double.parseDouble(JOptionPane.showInputDialog("Change Price: "));
+                        
+                        this.setCorporate_Class(number);                        
+                        this.Reading_Light_PRICE.setText(Double.toString(number));
+                        }catch(Exception asd)
+                        {
+                            
+                        }
+                    }
                     break;
                 case 7:
+                    if(event.equals(buttons[i]))
+                    {
+                        double number;
+                        try{
+                        number = Double.parseDouble(JOptionPane.showInputDialog("Change Price: "));
+                        
+                        this.setCorporate_Class(number);                        
+                        this.Books_And_Magazine_PRICE.setText(Double.toString(number));
+                        }catch(Exception asd)
+                        {
+                            
+                        }
+                    }
                     break;
                 case 8:
+                    if(event.equals(buttons[i]))
+                    {
+                        double number;
+                        try{
+                        number = Double.parseDouble(JOptionPane.showInputDialog("Change Price: "));
+                        
+                        this.setCorporate_Class(number);                        
+                        this.Toiletries_PRICE.setText(Double.toString(number));
+                        }catch(Exception asd)
+                        {
+                            
+                        }
+                    }
                     break;
                 case 9:
+                    if(event.equals(buttons[i]))
+                    {
+                        double number;
+                        try{
+                        number = Double.parseDouble(JOptionPane.showInputDialog("Change Price: "));
+                        
+                        this.setCorporate_Class(number);                        
+                        this.Luggage_Rack_PRICE.setText(Double.toString(number));
+                        }catch(Exception asd)
+                        {
+                            
+                        }
+                    }
                     break;
                 case 10:
+                    if(event.equals(buttons[i]))
+                    {
+                        double number;
+                        try{
+                        number = Double.parseDouble(JOptionPane.showInputDialog("Change Price: "));
+                        
+                        this.setCorporate_Class(number);                        
+                        this.BreakFast_PRICE.setText(Double.toString(number));
+                        }catch(Exception asd)
+                        {
+                            
+                        }
+                    }
                     break;
                 case 11:
+                    if(event.equals(buttons[i]))
+                    {
+                        double number;
+                        try{
+                        number = Double.parseDouble(JOptionPane.showInputDialog("Change Price: "));
+                        
+                        this.setCorporate_Class(number);                        
+                        this.Lunch_PRICE.setText(Double.toString(number));
+                        }catch(Exception asd)
+                        {
+                            
+                        }
+                    }
                     break;
                 case 12:
+                    if(event.equals(buttons[i]))
+                    {
+                        double number;
+                        try{
+                        number = Double.parseDouble(JOptionPane.showInputDialog("Change Price: "));
+                        
+                        this.setCorporate_Class(number);                        
+                        this.Dinner_PRICE.setText(Double.toString(number));
+                        }catch(Exception asd)
+                        {
+                            
+                        }
+                    }
                     break;
                 case 13:
+                    if(event.equals(buttons[i]))
+                    {
+                        double number;
+                        try{
+                        number = Double.parseDouble(JOptionPane.showInputDialog("Change Price: "));
+                        
+                        this.setCorporate_Class(number);                        
+                        this.Drink_PRICE.setText(Double.toString(number));
+                        }catch(Exception asd)
+                        {
+                            
+                        }
+                    }
                     break;
                 case 14:
+                    if(event.equals(buttons[i]))
+                    {
+                        double number;
+                        try{
+                        number = Double.parseDouble(JOptionPane.showInputDialog("Change Price: "));
+                        
+                        this.setCorporate_Class(number);                        
+                        this.Snack_PRICE.setText(Double.toString(number));
+                        }catch(Exception asd)
+                        {
+                            
+                        }
+                    }
                     break;
                 case 15:
+                    if(event.equals(buttons[i]))
+                    {
+                        double number;
+                        try{
+                        number = Double.parseDouble(JOptionPane.showInputDialog("Change Price: "));
+                        
+                        this.setCorporate_Class(number);                        
+                        this.Pillow_PRICE.setText(Double.toString(number));
+                        }catch(Exception asd)
+                        {
+                            
+                        }
+                    }
                     break;
                     
                     

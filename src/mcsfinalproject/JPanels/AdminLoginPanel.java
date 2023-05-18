@@ -1,10 +1,12 @@
 package mcsfinalproject.JPanels;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
 import java.util.List;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -34,8 +36,12 @@ public class AdminLoginPanel extends JPanel{
         this.AL = aL;
         
         this.setLayout(new GridBagLayout());
+        this.setBackground(Color.decode("#574b90"));
         GridBagConstraints gbc = new GridBagConstraints();
         JLabel label = new JLabel("ADMIN LOGIN");
+        label.setForeground(Color.decode("#5d5d5a"));
+        label.setBackground(Color.decode("#002651"));
+        
         label.setFont(myFont);
         gbc.fill = GridBagConstraints.VERTICAL;
         gbc.gridwidth = 2;
@@ -48,7 +54,11 @@ public class AdminLoginPanel extends JPanel{
         this.add(this.getForm(), gbc);
         
         backButton = new JButton("BACK");
+        
+        backButton.setBackground(Color.decode("#002651"));
         loginButton = new JButton("LOGIN");
+        
+        loginButton.setBackground(Color.decode("#002651"));
         backButton.setFont(myFont);
         loginButton.setFont(myFont);
         
@@ -68,6 +78,7 @@ public class AdminLoginPanel extends JPanel{
     public JPanel getForm()
     {
         JPanel localPanel = new JPanel(new GridBagLayout());
+        localPanel.setBackground(Color.decode("#002651"));
         GridBagConstraints gbcL = new GridBagConstraints();
         
         JLabel userLabel = new JLabel("USERNAME: ");

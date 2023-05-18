@@ -18,7 +18,7 @@ import mcsfinalproject.Tools.StaffTool;
 public class StaffPanel extends JPanel implements ActionListener{
     
     private StaffTool adtool = new StaffTool("src/mcsfinalproject/datas/staffs.json");
-    List <Staff> admins = adtool.getList();
+    List <Staff> staffs = adtool.getList();
     //List <JButton> buttons;
     JButton[] buttons = new JButton[50];
     JLabel[] ids = new JLabel[50];
@@ -34,8 +34,8 @@ public class StaffPanel extends JPanel implements ActionListener{
         
         JPanel northPanel = new JPanel(new FlowLayout());
         
-        addButton  = new JButton("ADD NEW ADMIN");
-        removeButton = new JButton("REMOVE ADMIN");
+        addButton  = new JButton("ADD NEW STAFF");
+        removeButton = new JButton("REMOVE STAFF");
         addButton.addActionListener(this);
         removeButton.addActionListener(this);
         northPanel.add(addButton);
@@ -66,28 +66,28 @@ public class StaffPanel extends JPanel implements ActionListener{
         gbc.gridy = 0;
         centerPanel.add(actionLabel, gbc);
         
-        for(int i=1; i<admins.size();i++)
+        for(int i=0; i<staffs.size();i++)
         {
             gbc.gridx = 1;
-            gbc.gridy = i;
-            JLabel localname = new JLabel(admins.get(i).getUsername());
+            gbc.gridy = i+1;
+            JLabel localname = new JLabel(staffs.get(i).getUsername());
             names[i] = localname;
             centerPanel.add(names[i], gbc);
             
             gbc.gridx = 0;
-            gbc.gridy = i;
-            JLabel localid = new JLabel(Integer.toString(admins.get(i).getId()));
+            gbc.gridy = i+1;
+            JLabel localid = new JLabel(Integer.toString(staffs.get(i).getId()));
             ids[i] = localid;
             centerPanel.add(ids[i], gbc);
             
             gbc.gridx = 2;
-            gbc.gridy = i;
-            JLabel localPass = new JLabel(admins.get(i).getPassword());
+            gbc.gridy = i+1;
+            JLabel localPass = new JLabel(staffs.get(i).getPassword());
             passwords[i] = localPass;
             centerPanel.add(passwords[i], gbc);
             
             gbc.gridx = 3;
-            gbc.gridy = i;
+            gbc.gridy = i+1;
             buttons[i] = new JButton("EDIT");
             buttons[i].addActionListener(this);
             centerPanel.add(buttons[i], gbc);
@@ -105,7 +105,7 @@ public class StaffPanel extends JPanel implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         Object event = e.getSource();
         
-        for(int i=0;i<admins.size();i++)
+        for(int i=0;i<staffs.size();i++)
         {
             if(event.equals(buttons[i]))
             {
@@ -117,7 +117,7 @@ public class StaffPanel extends JPanel implements ActionListener{
         
         if(event.equals(addButton))
         {
-            NewAdminFrame frame = new NewAdminFrame(centerPanel, names, passwords, buttons);
+            NewStaffFrame frame = new NewStaffFrame(centerPanel, names, passwords, buttons);
             frame.setVisible(true);
         }
         

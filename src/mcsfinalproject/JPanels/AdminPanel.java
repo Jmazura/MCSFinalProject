@@ -117,7 +117,7 @@ public class AdminPanel extends JPanel implements ActionListener{
         
         if(event.equals(addButton))
         {
-            NewAdminFrame frame = new NewAdminFrame(centerPanel, names, passwords, buttons);
+            NewAdminFrame frame = new NewAdminFrame(centerPanel, names, passwords, buttons, ids);
             frame.setVisible(true);
         }
         

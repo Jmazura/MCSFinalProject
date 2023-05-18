@@ -1,19 +1,21 @@
 package mcsfinalproject.JPanels;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import mcsfinalproject.Entities.Admin;
-import mcsfinalproject.Entities.Staff;
 import mcsfinalproject.Tools.AdminTool;
 
 public class AdminMenuPanel extends JPanel{
@@ -23,6 +25,7 @@ public class AdminMenuPanel extends JPanel{
     private int id;
     private Font myFont = new Font("Courier", Font.BOLD, 32);
     private Font myFont1 = new Font("Courier", Font.BOLD, 16);
+    private Font myFont2 = new Font("Courier", Font.BOLD, 14);
     
     private JButton manageCustomerButtom, manageReservationButton, manageRoomButton, aboutFormButton;
     private JLabel panelTitle, statusBarLabel;
@@ -30,10 +33,15 @@ public class AdminMenuPanel extends JPanel{
     private JButton manageStaffsButton, manageServicesButton,manageAdminsButton,manageHotelAnalyticsButton;
     
     private JButton logoutButton;
+    private CardLayout centerCardLayout = new CardLayout();
     
     private AdminTool admins = new AdminTool("src/mcsfinalproject/datas/admins.json");
     
     private String CurrentUser = "";
+    
+    private JPanel centerPanel;
+    
+    private ServicePanel servicePanel;
     
     public AdminMenuPanel(ActionListener aL,int w,int h)
     {
@@ -43,14 +51,22 @@ public class AdminMenuPanel extends JPanel{
         
         admins.removeByID(3);
         
+        centerPanel = new JPanel(centerCardLayout);
+        servicePanel = new ServicePanel();
+        centerPanel.add("SERVICE", servicePanel);
         
- 
+        
+        
+        centerCardLayout.show(centerPanel, "SERVICE");
+        
         this.add(createNorthPanel(), BorderLayout.NORTH);
-        this.add(createCenterPanel(), BorderLayout.WEST);
+        this.add(centerPanel, BorderLayout.CENTER);
+        this.add(leftSidePanel(), BorderLayout.WEST);
         this.add(createSouthPanel(), BorderLayout.SOUTH);
     }
+
     
-    public JPanel createCenterPanel()
+    public JPanel leftSidePanel()
     {
         JPanel localPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gbcL = new GridBagConstraints();
@@ -157,7 +173,7 @@ public class AdminMenuPanel extends JPanel{
         gbcL.gridx = 0;
         gbcL.gridy = 0;
         statusBarLabel = new JLabel("ADMIN USER: NONE");
-        statusBarLabel.setFont(myFont);
+        statusBarLabel.setFont(myFont2);
         
         localPanel.add(statusBarLabel, gbcL);
         return localPanel;
@@ -173,6 +189,9 @@ public class AdminMenuPanel extends JPanel{
     public void setID(int i)
     {
         this.id = i;
-        statusBarLabel.setText("ADMIN USER: "+ this.getUser());
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy");
+        String str = formatter.format(date);
+        statusBarLabel.setText("ADMIN USER: "+ this.getUser() +"    DATE: "+str);
     }
 }

@@ -1,0 +1,22 @@
+{
+  "Tourist_Class": 1000.0,
+  "Deluxe_Class": 1200.0,
+  "Ambassador_Class": 1300.0,
+  "Corporate_Class": 1500.0,
+  "Tourist_Class_Promo": 900.0,
+  "Deluxe_Class_Promo": 930.0,
+  "Ambassador_Class_Promo": 1030.0,
+  "Corporate_Class_Promo": 1300.0,
+  "Extra_Bed": 300.0,
+  "Pillow": 300.0,
+  "Reading_Light": 300.0,
+  "Books_And_Magazine": 300.0,
+  "Toiletries": 300.0,
+  "Luggage_Rack": 300.0,
+  "BreakFast": 400.0,
+  "Lunch": 400.0,
+  "Dinner": 400.0,
+  "Drink": 400.0,
+  "Snack": 400.0,
+  "Annex_Room": 300.0
+}

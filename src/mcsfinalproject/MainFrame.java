@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import mcsfinalproject.JPanels.*;
+import mcsfinalproject.Tools.AmenitiesTool;
 
 public class MainFrame extends JFrame implements ActionListener{
     
@@ -30,6 +31,8 @@ public class MainFrame extends JFrame implements ActionListener{
         FRAME_WIDTH = w; FRAME_HEIGHT= h; FRAME_TITLE = t;
         this.init();
         this.init_Panel();
+        
+
         
         
     }

@@ -1,6 +1,5 @@
 package mcsfinalproject.JPanels;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -12,9 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import mcsfinalproject.Entities.Admin;
-import mcsfinalproject.Entities.Staff;
 import mcsfinalproject.Tools.AdminTool;
-import mcsfinalproject.Tools.StaffTool;
 
 public class AdminLoginPanel extends JPanel{
     

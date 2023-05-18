@@ -25,6 +25,20 @@ public class StaffTool {
         read();
     }
     
+    public void update(List<Staff> admin)
+    {
+        try {
+            FileWriter writer = null;
+            
+            writer = new FileWriter(this.pathFile);
+            gson.toJson(admin, writer);
+            writer.close();
+            read();
+        } catch (IOException ex) {
+            Logger.getLogger(AdminTool.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public List<Staff> getList()
     {
         return staffs;

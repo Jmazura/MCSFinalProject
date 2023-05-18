@@ -46,6 +46,7 @@ public class AdminMenuPanel extends JPanel implements ActionListener{
     private AdminPanel adminPanel;
     private ReservationPanel reservationPanel;
     private RoomsPanel roomsPanel;
+    private StaffPanel staffPanel;
     private CustomersPanel customersPanel;
     private AnalyticsPanel analyticsPanel;
     private AboutUsPanel aboutUsPanel;
@@ -61,6 +62,7 @@ public class AdminMenuPanel extends JPanel implements ActionListener{
         centerPanel = new JPanel(centerCardLayout);
         servicePanel = new ServicePanel();
         adminPanel = new AdminPanel();
+        staffPanel = new StaffPanel();
         reservationPanel = new ReservationPanel();
         roomsPanel = new RoomsPanel();
         customersPanel = new CustomersPanel();
@@ -73,6 +75,7 @@ public class AdminMenuPanel extends JPanel implements ActionListener{
         centerPanel.add("CUSTOMER", customersPanel);
         centerPanel.add("ANALYTICS", analyticsPanel);
         centerPanel.add("ABOUT US", aboutUsPanel);
+        centerPanel.add("STAFF", staffPanel);
         
         
         
@@ -116,6 +119,10 @@ public class AdminMenuPanel extends JPanel implements ActionListener{
         if(event.equals(this.manageHotelAnalyticsButton))
         {
             centerCardLayout.show(centerPanel, "ANALYTICS");
+        }
+        if(event.equals(this.manageStaffsButton))
+        {
+            centerCardLayout.show(centerPanel, "STAFF");
         }
         
     }
@@ -180,7 +187,7 @@ public class AdminMenuPanel extends JPanel implements ActionListener{
         localPanel.add(this.manageHotelAnalyticsButton, gbcL);
         gbcL.gridx = 0;
         gbcL.gridy = 7;
-        localPanel.add(this.logoutButton, gbcL);
+        localPanel.add(this.manageStaffsButton, gbcL);
         gbcL.gridx = 0;
         gbcL.gridy = 8;
         localPanel.add(this.aboutFormButton, gbcL);

@@ -11,7 +11,12 @@
   },
   {
     "id": 2,
-    "username": "staff",
-    "password": "staff"
+    "username": "JOM",
+    "password": "JM"
+  },
+  {
+    "id": 3,
+    "username": "asd",
+    "password": "asd"
   }
 ]

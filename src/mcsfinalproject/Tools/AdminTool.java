@@ -19,11 +19,26 @@ public class AdminTool {
     private Gson gson;
     private List<Admin> admins = new ArrayList<>();
     
-    public AdminTool(String pathfile)
+   public AdminTool(String pathfile)
+    //public AdminTool( )
     {
         this.pathFile = pathfile;
         this.gson = new GsonBuilder().setPrettyPrinting().create();
         read();
+    }
+    
+    public void update(List<Admin> admin)
+    {
+        try {
+            FileWriter writer = null;
+            
+            writer = new FileWriter(this.pathFile);
+            gson.toJson(admin, writer);
+            writer.close();
+            read();
+        } catch (IOException ex) {
+            Logger.getLogger(AdminTool.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public List<Admin> getList()
@@ -152,6 +167,7 @@ public class AdminTool {
     
     public void read()
     {
+        admins.clear();
         try {
             FileReader reader = new FileReader(this.pathFile);
             //customers = gson.fromJson(reader, customers.getClass());

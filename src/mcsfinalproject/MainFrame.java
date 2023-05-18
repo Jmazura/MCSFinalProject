@@ -8,7 +8,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import mcsfinalproject.JPanels.*;
-import mcsfinalproject.Tools.AmenitiesTool;
 
 public class MainFrame extends JFrame implements ActionListener{
     

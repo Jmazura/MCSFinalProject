@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -18,7 +19,7 @@ import javax.swing.JPanel;
 import mcsfinalproject.Entities.Admin;
 import mcsfinalproject.Tools.AdminTool;
 
-public class AdminMenuPanel extends JPanel{
+public class AdminMenuPanel extends JPanel implements ActionListener{
     
     private int PANEL_WIDTH, PANEL_HEIGHT;
     private ActionListener AL;
@@ -42,6 +43,13 @@ public class AdminMenuPanel extends JPanel{
     private JPanel centerPanel;
     
     private ServicePanel servicePanel;
+    private AdminPanel adminPanel;
+    private ReservationPanel reservationPanel;
+    private RoomsPanel roomsPanel;
+    private CustomersPanel customersPanel;
+    private AnalyticsPanel analyticsPanel;
+    private AboutUsPanel aboutUsPanel;
+    
     
     public AdminMenuPanel(ActionListener aL,int w,int h)
     {
@@ -53,7 +61,19 @@ public class AdminMenuPanel extends JPanel{
         
         centerPanel = new JPanel(centerCardLayout);
         servicePanel = new ServicePanel();
+        adminPanel = new AdminPanel();
+        reservationPanel = new ReservationPanel();
+        roomsPanel = new RoomsPanel();
+        customersPanel = new CustomersPanel();
+        analyticsPanel = new AnalyticsPanel();
+        aboutUsPanel = new AboutUsPanel();
         centerPanel.add("SERVICE", servicePanel);
+        centerPanel.add("ADMIN", adminPanel);
+        centerPanel.add("RESERVATION", reservationPanel);
+        centerPanel.add("ROOMS", roomsPanel);
+        centerPanel.add("CUSTOMER", customersPanel);
+        centerPanel.add("ANALYTICS", analyticsPanel);
+        centerPanel.add("ABOUT US", aboutUsPanel);
         
         
         
@@ -63,6 +83,42 @@ public class AdminMenuPanel extends JPanel{
         this.add(centerPanel, BorderLayout.CENTER);
         this.add(leftSidePanel(), BorderLayout.WEST);
         this.add(createSouthPanel(), BorderLayout.SOUTH);
+    }
+    
+    
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Object event = e.getSource();
+        
+        if(event.equals(this.manageAdminsButton))
+        {
+            centerCardLayout.show(centerPanel, "ADMIN");
+        }
+        if(event.equals(this.manageServicesButton))
+        {
+            centerCardLayout.show(centerPanel, "SERVICE");
+        }
+        if(event.equals(this.manageReservationButton))
+        {
+            centerCardLayout.show(centerPanel, "RESERVATION");
+        }
+        if(event.equals(this.manageRoomButton))
+        {
+            centerCardLayout.show(centerPanel, "ROOMS");
+        }
+        if(event.equals(this.manageCustomerButtom))
+        {
+            centerCardLayout.show(centerPanel, "CUSTOMER");
+        }
+        if(event.equals(this.aboutFormButton))
+        {
+            centerCardLayout.show(centerPanel, "ABOUT US");
+        }
+        if(event.equals(this.manageHotelAnalyticsButton))
+        {
+            centerCardLayout.show(centerPanel, "ANALYTICS");
+        }
+        
     }
 
     
@@ -81,6 +137,16 @@ public class AdminMenuPanel extends JPanel{
         this.manageServicesButton = new JButton(" SERVICES");
         this.manageAdminsButton = new JButton(" ADMINS");
         this.manageHotelAnalyticsButton = new JButton(" ANALYTICS");
+        
+        this.manageCustomerButtom.addActionListener(this);
+        this.manageReservationButton.addActionListener(this);
+        this.manageRoomButton.addActionListener(this);
+        this.aboutFormButton.addActionListener(this);
+        this.logoutButton.addActionListener(this);
+        this.manageStaffsButton.addActionListener(this);
+        this.manageServicesButton.addActionListener(this);
+        this.manageAdminsButton.addActionListener(this);
+        this.manageHotelAnalyticsButton.addActionListener(this);
         
         this.manageStaffsButton.setFont(myFont1);
         this.manageServicesButton.setFont(myFont1);
@@ -194,4 +260,5 @@ public class AdminMenuPanel extends JPanel{
         String str = formatter.format(date);
         statusBarLabel.setText("ADMIN USER: "+ this.getUser() +"    DATE: "+str);
     }
+
 }

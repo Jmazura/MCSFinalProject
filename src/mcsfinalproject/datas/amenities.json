@@ -1,8 +1,8 @@
 {
-  "Tourist_Class": 1000.0,
-  "Deluxe_Class": 1200.0,
-  "Ambassador_Class": 1300.0,
-  "Corporate_Class": 1500.0,
+  "Tourist_Class": 4444.0,
+  "Deluxe_Class": 4343.0,
+  "Ambassador_Class": 3434.0,
+  "Corporate_Class": 343.0,
   "Tourist_Class_Promo": 900.0,
   "Deluxe_Class_Promo": 930.0,
   "Ambassador_Class_Promo": 1030.0,

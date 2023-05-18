@@ -33,9 +33,9 @@ public class ServicePanel extends JPanel implements ActionListener{
     private double Deluxe_Class_Promo;
     private JLabel Deluxe_Class_Promo_PRICE;
     private double Ambassador_Class_Promo;
-    private JLabel ambassador_PRICE;
+    private JLabel ambassador_Promo_PRICE;
     private double Corporate_Class_Promo;
-    private JLabel corporate_PRICE;
+    private JLabel corporate_Promo_PRICE;
     
     private double Extra_Bed;
     private JLabel Extra_Bed_PRICE;
@@ -137,18 +137,24 @@ public class ServicePanel extends JPanel implements ActionListener{
                     this.add(Deluxe_Class_PRICE, gbc);
                     break;
                 case 3:
-                    ambassador_PRICE = new JLabel(Double.toString(this.Ambassador_Class));
-                    this.add(ambassador_PRICE, gbc);
+                    this.Ambassador_Class_PRICE = new JLabel(Double.toString(this.Ambassador_Class));
+                    this.add(Ambassador_Class_PRICE, gbc);
                     break;
                 case 4:
-                    corporate_PRICE = new JLabel(Double.toString(this.Corporate_Class));
-                    this.add(corporate_PRICE, gbc);
+                    this.Corporate_Class_PRICE = new JLabel(Double.toString(this.Corporate_Class));
+                    this.add(Corporate_Class_PRICE, gbc);
                     break;
                 case 5:
+                    this.Extra_Bed_PRICE = new JLabel(Double.toString(this.Extra_Bed));
+                    this.add(Extra_Bed_PRICE, gbc); 
                     break;
                 case 6:
+                    this.Pillow_PRICE = new JLabel(Double.toString(this.Pillow));
+                    this.add(Pillow_PRICE, gbc); 
                     break;
                 case 7:
+                    this.Reading_Light_PRICE = new JLabel(Double.toString(this.Reading_Light));
+                    this.add(Reading_Light_PRICE, gbc); 
                     break;
                 case 8:
                     break;
@@ -471,9 +477,76 @@ public class ServicePanel extends JPanel implements ActionListener{
                 case 1:
                     if(event.equals(buttons[i]))
                     {
-                        System.out.println("SOMETHING");
+                        double number;
+                        try{
+                        number = Double.parseDouble(JOptionPane.showInputDialog("Change Price: "));
+                        
+                        this.setDeluxe_Class(number);                        
+                        this.Deluxe_Class_PRICE.setText(Double.toString(number));
+                        }catch(Exception asd)
+                        {
+                            
+                        }
                     }
                     break;
+                    
+                case 2:
+                    if(event.equals(buttons[i]))
+                    {
+                        double number;
+                        try{
+                        number = Double.parseDouble(JOptionPane.showInputDialog("Change Price: "));
+                        
+                        this.setAmbassador_Class(number);                        
+                        this.Ambassador_Class_PRICE.setText(Double.toString(number));
+                        }catch(Exception asd)
+                        {
+                            
+                        }
+                    }
+                    break;
+               
+                case 3:
+                    if(event.equals(buttons[i]))
+                    {
+                        double number;
+                        try{
+                        number = Double.parseDouble(JOptionPane.showInputDialog("Change Price: "));
+                        
+                        this.setCorporate_Class(number);                        
+                        this.Corporate_Class_PRICE.setText(Double.toString(number));
+                        }catch(Exception asd)
+                        {
+                            
+                        }
+                    }
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                case 7:
+                    break;
+                case 8:
+                    break;
+                case 9:
+                    break;
+                case 10:
+                    break;
+                case 11:
+                    break;
+                case 12:
+                    break;
+                case 13:
+                    break;
+                case 14:
+                    break;
+                case 15:
+                    break;
+                    
+                    
             }
         }
     }
